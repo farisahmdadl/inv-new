@@ -1,0 +1,2172 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Arka & Nadhira — 12.12.2026</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cormorant Garamond (Serif) & Plus Jakarta Sans (Sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tone.js for Subtle Ambient Piano Music -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+
+    <!-- Preload French Garden Gate SVGs -->
+    <link rel="preload" href="img/gate-left.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="img/gate-right.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="img/gate-center-top.svg" as="image" type="image/svg+xml">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ivory: '#FAF9F6',
+                        alabaster: '#F3F1EC',
+                        charcoal: '#2A2927',
+                        taupe: '#8C857B',
+                        blush: '#E8D8D0',
+                        olive: '#A3B19B',
+                        sage: {
+                            DEFAULT: '#6B7A6A',
+                            soft: '#8A9A86',
+                            light: '#E8ECE7',
+                            dark: '#4F5B4E'
+                        },
+                        sand: '#DEDAD2'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FAF9F6;
+            color: #2A2927;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Lock scroll when cover gate is open */
+        body.locked {
+            overflow: hidden;
+        }
+
+        /* Subtle Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF9F6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #DEDAD2;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8C857B;
+        }
+
+        /* Scroll Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Gate Transition - Updated for Watercolor Bleed Reveal */
+        #wedding-gate {
+            transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        #wedding-gate.gate-fading {
+            opacity: 0;
+            transform: scale(1.03);
+            pointer-events: none;
+        }
+        #wedding-gate.open {
+            display: none;
+            pointer-events: none;
+        }
+
+        /* Watercolor Paper Texture Overlay */
+        .watercolor-paper {
+            background-image: radial-gradient(rgba(138, 154, 134, 0.06) 1px, transparent 0),
+                              radial-gradient(rgba(232, 216, 208, 0.08) 1px, transparent 0);
+            background-size: 28px 28px;
+            background-position: 0 0, 14px 14px;
+        }
+
+        /* Watercolor Bloom Transition Overlay */
+        #watercolor-transition-layer {
+            pointer-events: none;
+            z-index: 60;
+        }
+        .wc-blob {
+            transform-box: fill-box;
+            transform-origin: center;
+            transform: scale(0);
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+        #watercolor-transition-layer.blooming .wc-blob-1 {
+            animation: wcBloomPrimary 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        #watercolor-transition-layer.blooming .wc-blob-2 {
+            animation: wcBloomSecondary 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.14s forwards;
+        }
+        #watercolor-transition-layer.blooming .wc-blob-3 {
+            animation: wcBloomTertiary 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.28s forwards;
+        }
+        #watercolor-transition-layer.blooming .wc-blob-4 {
+            animation: wcBloomFinal 2.1s cubic-bezier(0.22, 1, 0.36, 1) 0.42s forwards;
+        }
+
+        @keyframes wcBloomPrimary {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            25% { opacity: 0.85; }
+            65% { transform: scale(14) rotate(12deg); opacity: 0.75; }
+            100% { transform: scale(22) rotate(20deg); opacity: 0; }
+        }
+        @keyframes wcBloomSecondary {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            30% { opacity: 0.8; }
+            68% { transform: scale(15) rotate(-15deg); opacity: 0.7; }
+            100% { transform: scale(24) rotate(-25deg); opacity: 0; }
+        }
+        @keyframes wcBloomTertiary {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            30% { opacity: 0.9; }
+            72% { transform: scale(16) rotate(8deg); opacity: 0.75; }
+            100% { transform: scale(25) rotate(16deg); opacity: 0; }
+        }
+        @keyframes wcBloomFinal {
+            0% { transform: scale(0); opacity: 0; }
+            35% { opacity: 0.95; }
+            70% { transform: scale(18); opacity: 0.85; }
+            100% { transform: scale(28); opacity: 0; }
+        }
+
+        /* Subtle Floating Animation for Corner Botanical Washes */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(1.5deg); }
+        }
+        .wc-float {
+            animation: floatSlow 9s ease-in-out infinite;
+        }
+
+        /* Gentle Sway Animation for Botanical Twigs & Leaves */
+        @keyframes gentle-sway {
+            0%, 100% { transform: rotate(0deg) translateY(0px); }
+            50% { transform: rotate(2.2deg) translateY(-4px); }
+        }
+        @keyframes gentle-sway-reverse {
+            0%, 100% { transform: rotate(0deg) translateY(0px); }
+            50% { transform: rotate(-2.2deg) translateY(4px); }
+        }
+        .botanical-sway {
+            transform-origin: top left;
+            animation: gentle-sway 8s ease-in-out infinite;
+        }
+        .botanical-sway-tr {
+            transform-origin: top right;
+            animation: gentle-sway-reverse 8.2s ease-in-out infinite;
+        }
+        .botanical-sway-bl {
+            transform-origin: bottom left;
+            animation: gentle-sway 8.8s ease-in-out infinite;
+        }
+        .botanical-sway-br {
+            transform-origin: bottom right;
+            animation: gentle-sway-reverse 8.5s ease-in-out infinite;
+        }
+
+        /* Animated Growing Branches & Blooming Florals for Opening Transition */
+        .wc-branch-grow {
+            stroke-dasharray: 750;
+            stroke-dashoffset: 750;
+            opacity: 0;
+        }
+        .wc-twig-grow {
+            stroke-dasharray: 320;
+            stroke-dashoffset: 320;
+            opacity: 0;
+        }
+        .wc-node-bloom {
+            transform-box: fill-box;
+            transform-origin: center;
+            transform: scale(0);
+            opacity: 0;
+        }
+        #watercolor-transition-layer.blooming .wc-branch-grow {
+            animation: branchGrowStroke 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards;
+        }
+        #watercolor-transition-layer.blooming .wc-twig-grow {
+            animation: twigGrowStroke 2.0s cubic-bezier(0.22, 1, 0.36, 1) 0.28s forwards;
+        }
+        #watercolor-transition-layer.blooming .wc-node-bloom-1 {
+            animation: nodeFlowerBloom 2.1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.32s forwards;
+        }
+        #watercolor-transition-layer.blooming .wc-node-bloom-2 {
+            animation: nodeFlowerBloom 2.0s cubic-bezier(0.34, 1.56, 0.64, 1) 0.48s forwards;
+        }
+        #watercolor-transition-layer.blooming .wc-node-bloom-3 {
+            animation: nodeFlowerBloom 1.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.64s forwards;
+        }
+
+        @keyframes branchGrowStroke {
+            0% { stroke-dashoffset: 750; opacity: 0; }
+            15% { opacity: 0.9; }
+            65% { stroke-dashoffset: 0; opacity: 0.9; }
+            100% { stroke-dashoffset: 0; opacity: 0; }
+        }
+        @keyframes twigGrowStroke {
+            0% { stroke-dashoffset: 320; opacity: 0; }
+            20% { opacity: 0.85; }
+            68% { stroke-dashoffset: 0; opacity: 0.85; }
+            100% { stroke-dashoffset: 0; opacity: 0; }
+        }
+        @keyframes nodeFlowerBloom {
+            0% { transform: scale(0) rotate(-18deg); opacity: 0; }
+            35% { transform: scale(1.12) rotate(4deg); opacity: 0.95; }
+            72% { transform: scale(1) rotate(0deg); opacity: 0.88; }
+            100% { transform: scale(1.18) rotate(8deg); opacity: 0; }
+        }
+
+        /* Watercolor Transition Blooming Petals */
+        .wc-petal-burst {
+            transform-box: fill-box;
+            transform-origin: center;
+            opacity: 0;
+        }
+
+        /* Sparse Falling Watercolor Petals & Leaves */
+        @keyframes fallDrift {
+            0% {
+                transform: translateY(-10vh) translateX(0px) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.55;
+            }
+            85% {
+                opacity: 0.55;
+            }
+            100% {
+                transform: translateY(105vh) translateX(45px) rotate(220deg);
+                opacity: 0;
+            }
+        }
+        .falling-botanical {
+            position: fixed;
+            top: -8vh;
+            pointer-events: none;
+            z-index: 30;
+            animation: fallDrift linear infinite;
+        }
+
+        /* =========================================================
+           FRENCH BOTANICAL GARDEN GATE ANIMATION STYLES
+        ========================================================== */
+        #wedding-gate.gate-split-open {
+            animation: gateSplitReveal 0.8s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+            pointer-events: none;
+        }
+        @keyframes gateSplitReveal {
+            0% { opacity: 1; transform: scale(1); filter: blur(0px); }
+            50% { opacity: 0.5; transform: scale(1.04); filter: blur(2px); }
+            100% { opacity: 0; transform: scale(1.08); filter: blur(6px); }
+        }
+        .wc-curtain-left, .wc-curtain-right {
+            opacity: 0;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+        .wc-curtain-left {
+            transform-origin: left center;
+        }
+        .wc-curtain-right {
+            transform-origin: right center;
+        }
+        #watercolor-transition-layer.curtain-opening .wc-curtain-left {
+            animation: curtainLeftSlide 2.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        #watercolor-transition-layer.curtain-opening .wc-curtain-right {
+            animation: curtainRightSlide 2.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        #watercolor-transition-layer.curtain-opening .wc-blob-1 {
+            animation: wcBloomPrimary 2.0s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        @keyframes curtainLeftSlide {
+            0% { transform: translateX(-15%) scale(0.98); opacity: 0; }
+            20% { transform: translateX(0) scale(1); opacity: 1; }
+            46% { transform: translateX(0) scale(1); opacity: 1; }
+            100% { transform: translateX(-105%) scale(1.04) rotate(-3deg); opacity: 0; }
+        }
+        @keyframes curtainRightSlide {
+            0% { transform: translateX(15%) scale(0.98); opacity: 0; }
+            20% { transform: translateX(0) scale(1); opacity: 1; }
+            46% { transform: translateX(0) scale(1); opacity: 1; }
+            100% { transform: translateX(105%) scale(1.04) rotate(3deg); opacity: 0; }
+        }
+        .gate-door-left {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: right center;
+            display: block;
+        }
+        .gate-door-right {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: left center;
+            display: block;
+        }
+        .gate-door-top {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+        @media (min-width: 768px) {
+            .gate-door-top {
+                height: auto;
+                object-fit: contain;
+            }
+        }
+        .wc-curtain-top {
+            opacity: 0;
+            transform: translate(-50%, 0);
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+            transform-origin: center top;
+        }
+        #watercolor-transition-layer.curtain-opening .wc-curtain-top {
+            animation: curtainTopSlide 2.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        @keyframes curtainTopSlide {
+            0% { transform: translate(-50%, 0) scale(1); opacity: 0; }
+            18% { transform: translate(-50%, 0) scale(1); opacity: 1; }
+            46% { transform: translate(-50%, 0) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -120%) scale(1.04); opacity: 0; }
+        }
+
+        /* Active State for Bottom Icon Navigation */
+        .nav-icon-link.active {
+            background-color: #2A2927;
+            color: #FAF9F6;
+            box-shadow: 0 2px 10px rgba(42, 41, 39, 0.14);
+        }
+
+        /* Active State for Animation Mode Selector Pills */
+        .anim-mode-btn.active {
+            background-color: #6B7A6A;
+            color: #FAF9F6;
+            border-color: #6B7A6A;
+        }
+
+        /* Subtle Arch Image Mask */
+        .arch-frame {
+            border-top-left-radius: 9999px;
+            border-top-right-radius: 9999px;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+        }
+
+        /* Audio Wave Animation */
+        @keyframes equalize {
+            0%, 100% { height: 4px; }
+            50% { height: 14px; }
+        }
+        .music-bar {
+            width: 2px;
+            background-color: currentColor;
+            border-radius: 2px;
+            transition: height 0.2s ease;
+        }
+        .playing .music-bar:nth-child(1) { animation: equalize 1s infinite 0.1s; }
+        .playing .music-bar:nth-child(2) { animation: equalize 1s infinite 0.3s; }
+        .playing .music-bar:nth-child(3) { animation: equalize 1s infinite 0.2s; }
+        .playing .music-bar:nth-child(4) { animation: equalize 1s infinite 0.4s; }
+    </style>
+</head>
+<body class="locked antialiased watercolor-paper selection:bg-sage/20 selection:text-charcoal">
+
+    <!-- ==========================================
+         0. SVG DEFINITIONS & WATERCOLOR BLEED ENGINE
+    =========================================== -->
+    <svg class="fixed w-0 h-0 pointer-events-none" aria-hidden="true">
+        <defs>
+            <!-- Organic Wet-Edge Paper Bleed Filter -->
+            <filter id="watercolor-bleed" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="4" seed="14" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="42" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+                <feGaussianBlur in="displaced" stdDeviation="2.2" result="blurred" />
+                <feMerge>
+                    <feMergeNode in="blurred" />
+                    <feMergeNode in="displaced" />
+                </feMerge>
+            </filter>
+
+            <!-- Soft Botanical Wash Filter for Ambient Corner Accents -->
+            <filter id="watercolor-wash" x="-25%" y="-25%" width="150%" height="150%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="7" result="washNoise" />
+                <feDisplacementMap in="SourceGraphic" in2="washNoise" scale="24" xChannelSelector="R" yChannelSelector="G" result="washDisplaced" />
+                <feGaussianBlur in="washDisplaced" stdDeviation="4" />
+            </filter>
+
+            <!-- Radial Gradients for Pigmented Wet Edges -->
+            <radialGradient id="grad-sage" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#8A9A86" stop-opacity="0.55" />
+                <stop offset="65%" stop-color="#8A9A86" stop-opacity="0.75" />
+                <stop offset="92%" stop-color="#6B7A6A" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#6B7A6A" stop-opacity="0" />
+            </radialGradient>
+
+            <radialGradient id="grad-olive" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#A3B19B" stop-opacity="0.5" />
+                <stop offset="70%" stop-color="#A3B19B" stop-opacity="0.8" />
+                <stop offset="95%" stop-color="#8A9A86" stop-opacity="0.85" />
+                <stop offset="100%" stop-color="#8A9A86" stop-opacity="0" />
+            </radialGradient>
+
+            <radialGradient id="grad-blush" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#E8D8D0" stop-opacity="0.6" />
+                <stop offset="72%" stop-color="#E8D8D0" stop-opacity="0.85" />
+                <stop offset="95%" stop-color="#D8C2B8" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#D8C2B8" stop-opacity="0" />
+            </radialGradient>
+
+            <radialGradient id="grad-ivory" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FAF9F6" stop-opacity="0.95" />
+                <stop offset="80%" stop-color="#F3F1EC" stop-opacity="0.98" />
+                <stop offset="100%" stop-color="#FAF9F6" stop-opacity="0" />
+            </radialGradient>
+
+            <!-- Hand-Painted Botanical Watercolor Filter -->
+            <filter id="botanical-watercolor" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="3" seed="19" result="paperGrain" />
+                <feDisplacementMap in="SourceGraphic" in2="paperGrain" scale="4.5" xChannelSelector="R" yChannelSelector="G" result="roughened" />
+                <feGaussianBlur in="roughened" stdDeviation="0.45" result="softened" />
+                <feMerge>
+                    <feMergeNode in="softened" />
+                    <feMergeNode in="roughened" />
+                </feMerge>
+            </filter>
+
+            <!-- Translucent Botanical Watercolor Pigment Gradients -->
+            <linearGradient id="wc-eucalyptus" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#7A8E77" stop-opacity="0.65" />
+                <stop offset="60%" stop-color="#9CAF97" stop-opacity="0.48" />
+                <stop offset="100%" stop-color="#B5C4B1" stop-opacity="0.28" />
+            </linearGradient>
+
+            <linearGradient id="wc-olive-leaf" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#6B7B68" stop-opacity="0.7" />
+                <stop offset="70%" stop-color="#8A9A86" stop-opacity="0.45" />
+                <stop offset="100%" stop-color="#A3B19B" stop-opacity="0.25" />
+            </linearGradient>
+
+            <radialGradient id="wc-blush-petal" cx="40%" cy="40%" r="65%">
+                <stop offset="0%" stop-color="#F4E5E0" stop-opacity="0.85" />
+                <stop offset="65%" stop-color="#E6C8C0" stop-opacity="0.65" />
+                <stop offset="100%" stop-color="#D5B2A8" stop-opacity="0.35" />
+            </radialGradient>
+
+            <radialGradient id="wc-cream-blossom" cx="50%" cy="50%" r="60%">
+                <stop offset="0%" stop-color="#FAF9F6" stop-opacity="0.92" />
+                <stop offset="70%" stop-color="#EFECE6" stop-opacity="0.75" />
+                <stop offset="100%" stop-color="#E8D8D0" stop-opacity="0.45" />
+            </radialGradient>
+
+            <linearGradient id="wc-twig-ochre" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#8C7362" stop-opacity="0.65" />
+                <stop offset="100%" stop-color="#B09B8C" stop-opacity="0.35" />
+            </linearGradient>
+
+            <!-- Reusable Botanical Motifs -->
+            <!-- Single Eucalyptus Leaf -->
+            <g id="motif-eucalyptus-leaf">
+                <path d="M0,0 C-12,-14 -14,-34 0,-46 C14,-34 12,-14 0,0 Z" fill="url(#wc-eucalyptus)" />
+                <path d="M0,0 Q-1,-22 0,-42" stroke="#5E6E5B" stroke-width="0.6" stroke-opacity="0.4" fill="none" />
+            </g>
+
+            <!-- Elongated Olive Leaf -->
+            <g id="motif-olive-leaf">
+                <path d="M0,0 C-7,-12 -7,-32 0,-44 C7,-32 7,-12 0,0 Z" fill="url(#wc-olive-leaf)" />
+                <path d="M0,0 L0,-39" stroke="#556353" stroke-width="0.5" stroke-opacity="0.38" fill="none" />
+            </g>
+
+            <!-- 5-Petal Watercolor Anemone Blossom -->
+            <g id="motif-anemone-flower">
+                <ellipse cx="0" cy="-14" rx="9" ry="14" fill="url(#wc-blush-petal)" transform="rotate(0)" />
+                <ellipse cx="0" cy="-14" rx="9" ry="14" fill="url(#wc-cream-blossom)" transform="rotate(72)" />
+                <ellipse cx="0" cy="-14" rx="9" ry="14" fill="url(#wc-blush-petal)" transform="rotate(144)" />
+                <ellipse cx="0" cy="-14" rx="9" ry="14" fill="url(#wc-cream-blossom)" transform="rotate(216)" />
+                <ellipse cx="0" cy="-14" rx="9" ry="14" fill="url(#wc-blush-petal)" transform="rotate(288)" />
+                <circle cx="0" cy="0" r="4.5" fill="#9C8270" fill-opacity="0.55" />
+                <circle cx="-2" cy="-2" r="1" fill="#6B5A4E" fill-opacity="0.6" />
+                <circle cx="2" cy="-1.5" r="1" fill="#6B5A4E" fill-opacity="0.6" />
+                <circle cx="0" cy="2.2" r="1" fill="#6B5A4E" fill-opacity="0.6" />
+                <circle cx="-2.2" cy="1.5" r="0.9" fill="#6B5A4E" fill-opacity="0.6" />
+                <circle cx="2.2" cy="1.8" r="0.9" fill="#6B5A4E" fill-opacity="0.6" />
+            </g>
+
+            <!-- Soft Blush Bud -->
+            <g id="motif-blush-bud">
+                <path d="M0,0 C-8,-8 -7,-22 0,-28 C7,-22 8,-8 0,0 Z" fill="url(#wc-blush-petal)" />
+                <path d="M-4,-4 C-10,-10 -8,-20 -2,-24" fill="url(#wc-cream-blossom)" opacity="0.7" />
+                <path d="M-3,1 Q0,-3 3,1" stroke="#6B7B68" stroke-width="1" stroke-opacity="0.5" fill="none" />
+            </g>
+
+            <!-- Wild Rose Blossom (Multi-layered Watercolor Rose) -->
+            <g id="motif-wild-rose">
+                <circle cx="0" cy="-10" r="11" fill="url(#wc-blush-petal)" />
+                <circle cx="10" cy="-3" r="11" fill="url(#wc-cream-blossom)" />
+                <circle cx="6" cy="9" r="11" fill="url(#wc-blush-petal)" />
+                <circle cx="-6" cy="9" r="11" fill="url(#wc-cream-blossom)" />
+                <circle cx="-10" cy="-3" r="11" fill="url(#wc-blush-petal)" />
+                <path d="M-6,-4 C-2,-9 4,-9 7,-3 C9,3 3,8 -3,6 C-8,4 -8,-1 -4,-4 Z" fill="url(#wc-blush-petal)" opacity="0.85" />
+                <circle cx="0" cy="0" r="3.5" fill="#B89982" fill-opacity="0.65" />
+                <circle cx="-2" cy="-1.5" r="0.9" fill="#6B5A4E" fill-opacity="0.7" />
+                <circle cx="2" cy="-1" r="0.9" fill="#6B5A4E" fill-opacity="0.7" />
+                <circle cx="0.5" cy="2" r="0.9" fill="#6B5A4E" fill-opacity="0.7" />
+            </g>
+
+            <!-- Baby's Breath (Gypsophila) Cluster & Berries -->
+            <g id="motif-babys-breath">
+                <path d="M0,0 Q-8,-14 -14,-24 M0,0 Q0,-18 2,-30 M0,0 Q9,-14 15,-22" stroke="url(#wc-twig-ochre)" stroke-width="0.75" fill="none" stroke-linecap="round" />
+                <circle cx="-14" cy="-24" r="3.2" fill="url(#wc-cream-blossom)" />
+                <circle cx="-8" cy="-16" r="2.5" fill="url(#wc-blush-petal)" />
+                <circle cx="2" cy="-30" r="3.5" fill="url(#wc-cream-blossom)" />
+                <circle cx="-3" cy="-21" r="2.4" fill="url(#wc-cream-blossom)" />
+                <circle cx="15" cy="-22" r="3" fill="url(#wc-blush-petal)" />
+                <circle cx="9" cy="-14" r="2.2" fill="url(#wc-cream-blossom)" />
+            </g>
+
+            <!-- Reusable Left Crescent Botanical Half-Wreath -->
+            <g id="motif-crescent-wreath-left" filter="url(#botanical-watercolor)">
+                <path d="M95,15 C35,55 15,140 35,220 C48,270 80,305 115,320" stroke="url(#wc-twig-ochre)" stroke-width="1.4" fill="none" stroke-linecap="round" />
+                <path d="M40,85 C20,120 18,165 28,205" stroke="url(#wc-twig-ochre)" stroke-width="0.9" fill="none" stroke-linecap="round" />
+                <use href="#motif-olive-leaf" transform="translate(68,38) rotate(-35) scale(0.58)" />
+                <use href="#motif-eucalyptus-leaf" transform="translate(42,78) rotate(-65) scale(0.62)" />
+                <use href="#motif-olive-leaf" transform="translate(26,125) rotate(-95) scale(0.6)" />
+                <use href="#motif-eucalyptus-leaf" transform="translate(25,175) rotate(-115) scale(0.64)" />
+                <use href="#motif-olive-leaf" transform="translate(40,228) rotate(-135) scale(0.62)" />
+                <use href="#motif-eucalyptus-leaf" transform="translate(68,278) rotate(-150) scale(0.55)" />
+                <use href="#motif-babys-breath" transform="translate(28,105) rotate(-65) scale(0.65)" />
+                <use href="#motif-babys-breath" transform="translate(36,205) rotate(-115) scale(0.65)" />
+                <use href="#motif-wild-rose" transform="translate(25,150) scale(0.75)" />
+                <use href="#motif-anemone-flower" transform="translate(42,240) scale(0.65)" />
+                <use href="#motif-blush-bud" transform="translate(82,25) rotate(-25) scale(0.58)" />
+                <use href="#motif-blush-bud" transform="translate(95,305) rotate(-145) scale(0.58)" />
+            </g>
+
+            <!-- Horizontal Minimalist Botanical Divider Branch -->
+            <g id="motif-divider-branch" filter="url(#botanical-watercolor)">
+                <!-- Main Fine Twig -->
+                <path d="M15,30 Q95,18 180,30 T345,27" stroke="url(#wc-twig-ochre)" stroke-width="1.3" fill="none" stroke-linecap="round" />
+                <path d="M95,26 Q70,12 42,16" stroke="url(#wc-twig-ochre)" stroke-width="0.9" fill="none" stroke-linecap="round" />
+                <path d="M265,29 Q290,15 318,19" stroke="url(#wc-twig-ochre)" stroke-width="0.9" fill="none" stroke-linecap="round" />
+                <!-- Leaves along branch -->
+                <use href="#motif-olive-leaf" transform="translate(55,22) rotate(-72) scale(0.48)" />
+                <use href="#motif-olive-leaf" transform="translate(82,26) rotate(-65) scale(0.55)" />
+                <use href="#motif-eucalyptus-leaf" transform="translate(115,27) rotate(55) scale(0.52)" />
+                <use href="#motif-olive-leaf" transform="translate(148,28) rotate(-52) scale(0.54)" />
+                <use href="#motif-eucalyptus-leaf" transform="translate(215,29) rotate(62) scale(0.54)" />
+                <use href="#motif-olive-leaf" transform="translate(250,29) rotate(-58) scale(0.52)" />
+                <use href="#motif-olive-leaf" transform="translate(285,28) rotate(68) scale(0.54)" />
+                <use href="#motif-eucalyptus-leaf" transform="translate(312,24) rotate(75) scale(0.46)" />
+                <!-- Baby's Breath & Center Blossoms -->
+                <use href="#motif-babys-breath" transform="translate(132,26) rotate(-45) scale(0.58)" />
+                <use href="#motif-babys-breath" transform="translate(228,28) rotate(45) scale(0.58)" />
+                <use href="#motif-blush-bud" transform="translate(152,26) rotate(-35) scale(0.58)" />
+                <use href="#motif-blush-bud" transform="translate(208,28) rotate(35) scale(0.58)" />
+                <use href="#motif-wild-rose" transform="translate(180,29) scale(0.72)" />
+            </g>
+        </defs>
+    </svg>
+
+    <!-- Sparse Ambient Falling Watercolor Petals & Leaves Layer -->
+    <div id="ambient-petals-container" class="fixed inset-0 pointer-events-none z-30 overflow-hidden opacity-0 transition-opacity duration-1000" aria-hidden="true"><svg class="falling-botanical w-7 h-7 left-[8%]" style="animation-duration: 21s; animation-delay: 0s;" viewBox="-20 -50 40 55">
+        <g filter="url(#botanical-watercolor)">
+            <use href="#motif-blush-bud" transform="scale(0.85)" />
+        </g>
+        </svg>
+        <!-- Kelopak 2 -->
+        <svg class="falling-botanical w-8 h-8 left-[28%]" style="animation-duration: 26s; animation-delay: -7s;" viewBox="-20 -50 40 55">
+            <g filter="url(#botanical-watercolor)">
+                <use href="#motif-eucalyptus-leaf" transform="scale(0.75)" />
+            </g>
+        </svg>
+        <!-- Kelopak 3 -->
+        <svg class="falling-botanical w-6 h-6 left-[58%]" style="animation-duration: 23s; animation-delay: -13s;" viewBox="-20 -50 40 55">
+            <g filter="url(#botanical-watercolor)">
+                <use href="#motif-olive-leaf" transform="scale(0.75)" />
+            </g>
+        </svg>
+        <!-- Kelopak 4 -->
+        <svg class="falling-botanical w-7 h-7 left-[82%]" style="animation-duration: 28s; animation-delay: -4s;" viewBox="-20 -50 40 55">
+            <g filter="url(#botanical-watercolor)">
+                <use href="#motif-blush-bud" transform="scale(0.75)" />
+            </g>
+        </svg>
+        <!-- Kelopak 5 -->
+        <svg class="falling-botanical w-7 h-7 left-[92%]" style="animation-duration: 24s; animation-delay: -16s;" viewBox="-20 -50 40 55">
+            <g filter="url(#botanical-watercolor)">
+                <use href="#motif-eucalyptus-leaf" transform="scale(0.68)" />
+            </g>
+        </svg>
+
+        <!-- TAMBAHAN KELOPAK TAMBAHAN (RAMAI) -->
+        <!-- Kelopak 6 -->
+        <svg class="falling-botanical w-6 h-6 left-[14%]" style="animation-duration: 18s; animation-delay: -2s;" viewBox="-20 -50 40 55">
+            <g filter="url(#botanical-watercolor)">
+                <use href="#motif-wild-rose" transform="scale(0.7)" />
+            </g>
+        </svg>
+        <!-- Kelopak 7 -->
+        <svg class="falling-botanical w-7 h-7 left-[22%]" style="animation-duration: 22s; animation-delay: -9s;" viewBox="-20 -50 40 55">
+            <g filter="url(#botanical-watercolor)">
+                <use href="#motif-babys-breath" transform="scale(0.75)" />
+            </g>
+        </svg>
+        <!-- Kelopak 8 -->
+        <svg class="falling-botanical w-8 h-8 left-[36%]" style="animation-duration: 19s; animation-delay: -5s;" viewBox="-20 -50 40 55">
+            <g filter="url(#botanical-watercolor)">
+                <use href="#motif-anemone-flower" transform="scale(0.65)" />
+            </g>
+        </svg>
+        <!-- Kelopak 9 -->
+        <svg class="falling-botanical w-6 h-6 left-[45%]" style="animation-duration: 25s; animation-delay: -11s;" viewBox="-20 -50 40 55">
+            <g filter="url(#botanical-watercolor)">
+                <use href="#motif-olive-leaf" transform="scale(0.8)" />
+            </g>
+        </svg>
+        <!-- Kelopak 10 -->
+        <svg class="falling-botanical w-7 h-7 left-[52%]" style="animation-duration: 17s; animation-delay: -3s;" viewBox="-20 -50 40 55">
+            <g filter="url(#botanical-watercolor)">
+                <use href="#motif-blush-bud" transform="scale(0.7)" />
+            </g>
+        </svg>
+        <!-- Kelopak 11 -->
+        <svg class="falling-botanical w-8 h-8 left-[68%]" style="animation-duration: 27s; animation-delay: -8s;" viewBox="-20 -50 40 55">
+            <g filter="url(#botanical-watercolor)">
+                <use href="#motif-wild-rose" transform="scale(0.75)" />
+            </g>
+        </svg>
+        <!-- Kelopak 12 -->
+        <svg class="falling-botanical w-6 h-6 left-[74%]" style="animation-duration: 20s; animation-delay: -14s;" viewBox="-20 -50 40 55">
+            <g filter="url(#botanical-watercolor)">
+                <use href="#motif-eucalyptus-leaf" transform="scale(0.8)" />
+            </g>
+        </svg>
+        <!-- Kelopak 13 -->
+        <svg class="falling-botanical w-7 h-7 left-[86%]" style="animation-duration: 23s; animation-delay: -6s;" viewBox="-20 -50 40 55">
+            <g filter="url(#botanical-watercolor)">
+                <use href="#motif-babys-breath" transform="scale(0.7)" />
+            </g>
+        </svg>
+        <!-- Kelopak 14 -->
+        <svg class="falling-botanical w-6 h-6 left-[3%]" style="animation-duration: 24s; animation-delay: -10s;" viewBox="-20 -50 40 55">
+            <g filter="url(#botanical-watercolor)">
+                <use href="#motif-anemone-flower" transform="scale(0.7)" />
+            </g>
+        </svg>
+        <!-- Kelopak 15 -->
+        <svg class="falling-botanical w-8 h-8 left-[97%]" style="animation-duration: 19s; animation-delay: -1s;" viewBox="-20 -50 40 55">
+            <g filter="url(#botanical-watercolor)">
+                <use href="#motif-wild-rose" transform="scale(0.65)" />
+            </g>
+        </svg>
+    </div>
+
+    <!-- Fullscreen Watercolor Ink-Bleed Transition Overlay -->
+    <div id="watercolor-transition-layer" class="fixed inset-0 overflow-hidden hidden pointer-events-none z-[55]">
+        <!-- Fullscreen Watercolor Bleed Wash (Layer 1 Background) -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
+            <g filter="url(#watercolor-bleed)">
+                <!-- Layer 1: Warm Blush Wash -->
+                <path class="wc-blob wc-blob-1" fill="url(#grad-blush)"
+                      d="M500,440 C550,430 590,460 585,510 C580,560 535,585 485,575 C435,565 415,525 425,475 C435,435 460,448 500,440 Z" />
+            </g>
+        </svg>
+
+        <!-- FRENCH GARDEN GATE (PARTING ARCHED VINES) -->
+        <div id="french-garden-gate" class="absolute inset-0 w-full h-full flex pointer-events-none overflow-hidden">
+            <!-- Left Gate Door -->
+            <div class="wc-curtain-left relative w-[calc(50%+1px)] h-full overflow-hidden select-none pointer-events-none">
+                <img src="img/gate-left.svg" alt="French Garden Gate Left" class="gate-door-left pointer-events-none select-none" />
+            </div>
+            <!-- Right Gate Door -->
+            <div class="wc-curtain-right relative w-[calc(50%+1px)] -ml-[1px] h-full overflow-hidden select-none pointer-events-none">
+                <img src="img/gate-right.svg" alt="French Garden Gate Right" class="gate-door-right pointer-events-none select-none" />
+            </div>
+            <!-- Center Top Gate Crest (Animates Upwards) -->
+            <div class="wc-curtain-top absolute top-0 left-1/2 w-full h-full md:w-[60vw] md:h-auto max-w-none pointer-events-none select-none z-10">
+                <img src="img/gate-center-top.svg" alt="French Garden Gate Center Top" class="gate-door-top w-full h-full md:h-auto object-cover md:object-contain object-top pointer-events-none select-none mx-auto block drop-shadow-sm" />
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         1. COVER / WELCOME OVERLAY (GATE)
+    =========================================== -->
+    <div id="wedding-gate" class="fixed inset-0 z-50 bg-ivory flex flex-col justify-between items-center p-6 sm:p-12 text-center select-none overflow-hidden">
+        <!-- Ambient Corner Watercolor Botanical Washes & Hand-Painted Branches (All 4 Corners) -->
+        <!-- Top-Left Corner Branch -->
+        <svg class="absolute -top-6 -left-6 w-72 h-72 sm:w-[410px] sm:h-[410px] pointer-events-none opacity-90 botanical-sway" viewBox="0 0 420 420">
+            <g filter="url(#watercolor-wash)">
+                <circle cx="105" cy="105" r="115" fill="#8A9A86" fill-opacity="0.2" />
+                <circle cx="175" cy="75" r="90" fill="#E8D8D0" fill-opacity="0.32" />
+                <ellipse cx="75" cy="185" rx="95" ry="70" fill="#A3B19B" fill-opacity="0.18" />
+            </g>
+            <g filter="url(#botanical-watercolor)">
+                <path d="M-10,15 Q85,75 165,165 Q215,215 265,245" stroke="url(#wc-twig-ochre)" stroke-width="1.8" fill="none" stroke-linecap="round" />
+                <path d="M65,58 Q145,45 235,68" stroke="url(#wc-twig-ochre)" stroke-width="1.2" fill="none" stroke-linecap="round" />
+                <path d="M85,82 Q60,155 78,235" stroke="url(#wc-twig-ochre)" stroke-width="1.2" fill="none" stroke-linecap="round" />
+                <use href="#motif-eucalyptus-leaf" transform="translate(105,95) rotate(115) scale(0.95)" />
+                <use href="#motif-eucalyptus-leaf" transform="translate(145,135) rotate(165) scale(0.88)" />
+                <use href="#motif-olive-leaf" transform="translate(185,178) rotate(110) scale(0.92)" />
+                <use href="#motif-olive-leaf" transform="translate(215,205) rotate(155) scale(0.8)" />
+                <use href="#motif-eucalyptus-leaf" transform="translate(140,55) rotate(85) scale(0.85)" />
+                <use href="#motif-olive-leaf" transform="translate(190,58) rotate(115) scale(0.78)" />
+                <use href="#motif-eucalyptus-leaf" transform="translate(72,145) rotate(185) scale(0.85)" />
+                <use href="#motif-olive-leaf" transform="translate(75,195) rotate(145) scale(0.78)" />
+                <use href="#motif-babys-breath" transform="translate(130,115) rotate(130) scale(0.85)" />
+                <use href="#motif-wild-rose" transform="translate(95,78) scale(0.98)" />
+                <use href="#motif-anemone-flower" transform="translate(162,152) rotate(28) scale(0.85)" />
+                <use href="#motif-blush-bud" transform="translate(232,68) rotate(95) scale(0.78)" />
+                <use href="#motif-blush-bud" transform="translate(248,232) rotate(135) scale(0.75)" />
+                <use href="#motif-blush-bud" transform="translate(76,228) rotate(168) scale(0.72)" />
+            </g>
+        </svg>
+
+        <!-- Top-Right Hanging Botanical Sprig -->
+        <svg class="absolute -top-6 -right-6 w-60 h-60 sm:w-80 sm:h-80 pointer-events-none opacity-85 botanical-sway-tr" viewBox="0 0 320 320">
+            <g filter="url(#watercolor-wash)">
+                <circle cx="240" cy="80" r="85" fill="#E8D8D0" fill-opacity="0.28" />
+                <circle cx="190" cy="110" r="70" fill="#8A9A86" fill-opacity="0.16" />
+            </g>
+            <g filter="url(#botanical-watercolor)">
+                <path d="M330,10 Q245,55 185,125 Q145,170 115,210" stroke="url(#wc-twig-ochre)" stroke-width="1.5" fill="none" stroke-linecap="round" />
+                <path d="M250,55 Q265,120 245,180" stroke="url(#wc-twig-ochre)" stroke-width="1.1" fill="none" stroke-linecap="round" />
+                <use href="#motif-olive-leaf" transform="translate(225,75) rotate(-125) scale(0.82)" />
+                <use href="#motif-eucalyptus-leaf" transform="translate(190,115) rotate(-155) scale(0.8)" />
+                <use href="#motif-olive-leaf" transform="translate(155,158) rotate(-120) scale(0.76)" />
+                <use href="#motif-eucalyptus-leaf" transform="translate(255,120) rotate(-175) scale(0.75)" />
+                <use href="#motif-babys-breath" transform="translate(210,98) rotate(-135) scale(0.75)" />
+                <use href="#motif-anemone-flower" transform="translate(232,68) scale(0.85)" />
+                <use href="#motif-blush-bud" transform="translate(125,198) rotate(-135) scale(0.7)" />
+                <use href="#motif-blush-bud" transform="translate(245,172) rotate(-165) scale(0.68)" />
+            </g>
+        </svg>
+
+        <!-- Bottom-Left Hanging Botanical Sprig -->
+        <svg class="absolute -bottom-6 -left-6 w-60 h-60 sm:w-80 sm:h-80 pointer-events-none opacity-85 botanical-sway-bl" viewBox="0 0 320 320">
+            <g filter="url(#watercolor-wash)">
+                <circle cx="80" cy="240" r="85" fill="#8A9A86" fill-opacity="0.18" />
+                <circle cx="130" cy="210" r="70" fill="#E8D8D0" fill-opacity="0.26" />
+            </g>
+            <g filter="url(#botanical-watercolor)">
+                <path d="M-10,310 Q75,265 135,195 Q175,150 205,110" stroke="url(#wc-twig-ochre)" stroke-width="1.5" fill="none" stroke-linecap="round" />
+                <path d="M70,265 Q55,200 75,140" stroke="url(#wc-twig-ochre)" stroke-width="1.1" fill="none" stroke-linecap="round" />
+                <use href="#motif-eucalyptus-leaf" transform="translate(95,245) rotate(55) scale(0.82)" />
+                <use href="#motif-olive-leaf" transform="translate(130,205) rotate(25) scale(0.8)" />
+                <use href="#motif-eucalyptus-leaf" transform="translate(165,162) rotate(60) scale(0.76)" />
+                <use href="#motif-olive-leaf" transform="translate(65,200) rotate(5) scale(0.75)" />
+                <use href="#motif-babys-breath" transform="translate(110,222) rotate(45) scale(0.75)" />
+                <use href="#motif-wild-rose" transform="translate(88,252) scale(0.82)" />
+                <use href="#motif-blush-bud" transform="translate(195,122) rotate(45) scale(0.7)" />
+                <use href="#motif-blush-bud" transform="translate(75,148) rotate(15) scale(0.68)" />
+            </g>
+        </svg>
+
+        <!-- Bottom-Right Corner Branch -->
+        <svg class="absolute -bottom-6 -right-6 w-72 h-72 sm:w-[410px] sm:h-[410px] pointer-events-none opacity-90 botanical-sway-br" viewBox="0 0 420 420">
+            <g filter="url(#watercolor-wash)">
+                <circle cx="315" cy="315" r="115" fill="#E8D8D0" fill-opacity="0.32" />
+                <circle cx="245" cy="345" r="95" fill="#8A9A86" fill-opacity="0.2" />
+            </g>
+            <g filter="url(#botanical-watercolor)">
+                <path d="M430,405 Q335,345 255,255 Q205,205 155,175" stroke="url(#wc-twig-ochre)" stroke-width="1.8" fill="none" stroke-linecap="round" />
+                <path d="M355,362 Q275,375 185,352" stroke="url(#wc-twig-ochre)" stroke-width="1.2" fill="none" stroke-linecap="round" />
+                <use href="#motif-olive-leaf" transform="translate(315,325) rotate(-65) scale(0.95)" />
+                <use href="#motif-eucalyptus-leaf" transform="translate(275,285) rotate(-15) scale(0.88)" />
+                <use href="#motif-olive-leaf" transform="translate(235,242) rotate(-70) scale(0.92)" />
+                <use href="#motif-babys-breath" transform="translate(290,305) rotate(-50) scale(0.85)" />
+                <use href="#motif-anemone-flower" transform="translate(325,342) scale(0.98)" />
+                <use href="#motif-wild-rose" transform="translate(258,268) rotate(-25) scale(0.85)" />
+                <use href="#motif-blush-bud" transform="translate(172,188) rotate(-45) scale(0.75)" />
+            </g>
+            
+        </svg>
+
+        <!-- Top Header on Cover Gate -->
+        <div class="relative z-10 pt-2 pointer-events-none">
+            <p class="text-[11px] uppercase tracking-[0.35em] text-taupe">The Wedding Of</p>
+        </div>
+
+        <!-- Center Content on Cover Gate -->
+        <div class="relative z-30 my-auto max-w-md w-full px-4">
+            <!-- Cover Couple Frame with Crescent Floral Wreath -->
+            <div class="relative w-36 h-44 sm:w-40 sm:h-48 mx-auto mb-6">
+                <svg class="absolute -left-8 -top-4 w-28 h-52 pointer-events-none z-20 botanical-sway" viewBox="0 0 140 340">
+                    <use href="#motif-crescent-wreath-left" />
+                </svg>
+                <svg class="absolute -right-8 -bottom-4 w-28 h-52 pointer-events-none z-20 botanical-sway-br" viewBox="0 0 140 340">
+                    <use href="#motif-crescent-wreath-left" transform="translate(140, 340) rotate(180)" />
+                </svg>
+                <div class="w-full h-full p-1.5 border border-sand arch-frame bg-ivory shadow-sm overflow-hidden relative z-10">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" 
+                         alt="Arka & Nadhira" 
+                         class="w-full h-full object-cover arch-frame"
+                         onerror="this.src='https://placehold.co/400x500/F3F1EC/6B7A6A?text=A+%26+N'">
+                </div>
+            </div>
+
+            <!-- h1 & date in Cover Gate -->
+            <h1 class="font-serif text-4xl sm:text-5xl font-normal tracking-wide text-charcoal mb-2">
+                Arka <span class="italic font-light text-sage">&amp;</span> Nadhira
+            </h1>
+            <p class="text-xs uppercase tracking-[0.25em] text-taupe mb-5">Sabtu, 12 Desember 2026</p>
+
+            <!-- Guest Name Card & Open Button (#open-btn) -->
+            <div class="relative z-50 pointer-events-auto bg-alabaster/90 backdrop-blur-sm border border-sand rounded-2xl p-5 sm:p-6 shadow-sm max-w-xs mx-auto">
+                <p class="text-[11px] uppercase tracking-[0.2em] text-taupe mb-1">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+                <p id="guest-name-display" class="font-serif text-2xl font-medium text-charcoal mb-5">Tamu Undangan</p>
+                
+                <button id="open-btn" type="button" onclick="openInvitation()" class="relative z-50 pointer-events-auto cursor-pointer w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-charcoal text-ivory text-xs uppercase tracking-[0.22em] rounded-full hover:bg-sage active:scale-95 transition-all duration-300 shadow-sm">
+                    <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"/>
+                    </svg>
+                    <span class="pointer-events-none">Buka Undangan</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         FLOATING CONTROLS (AUDIO, PETALS & BOTTOM NAV)
+    =========================================== -->
+    <!-- Floating Audio & Petals Toggle Buttons -->
+    <div class="fixed bottom-20 right-4 sm:bottom-8 sm:right-6 z-40 flex flex-col gap-2.5">
+        <button id="petals-toggle-btn" type="button" onclick="togglePetals()" class="w-10 h-10 rounded-full bg-ivory/90 backdrop-blur-md border border-sand shadow-sm flex items-center justify-center text-sage hover:border-sage transition-all duration-300 opacity-0 pointer-events-none" title="Aktifkan/Nonaktifkan Kelopak Bunga">
+            <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+        </button>
+
+        <button id="audio-toggle-btn" type="button" onclick="toggleMusic()" class="w-10 h-10 rounded-full bg-ivory/90 backdrop-blur-md border border-sand shadow-sm flex items-center justify-center text-charcoal hover:border-sage transition-all duration-300 opacity-0 pointer-events-none" title="Putar/Jeda Musik Latar">
+            <div id="music-bars" class="flex items-end gap-[2px] h-3.5 pointer-events-none">
+                <span class="music-bar h-2"></span>
+                <span class="music-bar h-3"></span>
+                <span class="music-bar h-1.5"></span>
+                <span class="music-bar h-2.5"></span>
+            </div>
+        </button>
+    </div>
+
+    <!-- Floating Bottom Icon Navigation Bar -->
+    <nav id="bottom-nav" aria-label="Navigasi Utama" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 bg-ivory/90 backdrop-blur-md border border-sand/90 rounded-full px-2.5 py-1.5 shadow-md flex items-center gap-1.5 sm:gap-2 text-taupe transition-all duration-500 opacity-0 pointer-events-none">
+        <!-- Home / Hero -->
+        <a href="#hero" data-section="hero" aria-label="Beranda" class="nav-icon-link active group relative w-10 h-10 rounded-full flex items-center justify-center hover:text-charcoal hover:bg-alabaster transition-all duration-300">
+            <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10.5L12 3l9 7.5v9a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 19.5v-9z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 21V13.5h6V21"/>
+            </svg>
+            <span class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-charcoal text-ivory text-[9px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-sm">Beranda</span>
+        </a>
+
+        <!-- Mempelai (Couple) -->
+        <a href="#mempelai" data-section="mempelai" aria-label="Mempelai" class="nav-icon-link group relative w-10 h-10 rounded-full flex items-center justify-center hover:text-charcoal hover:bg-alabaster transition-all duration-300">
+            <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+            <span class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-charcoal text-ivory text-[9px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-sm">Mempelai</span>
+        </a>
+
+        <!-- Acara (Events) -->
+        <a href="#acara" data-section="acara" aria-label="Waktu & Tempat" class="nav-icon-link group relative w-10 h-10 rounded-full flex items-center justify-center hover:text-charcoal hover:bg-alabaster transition-all duration-300">
+            <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            <span class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-charcoal text-ivory text-[9px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-sm">Acara</span>
+        </a>
+
+        <!-- Kisah Cinta (Love Story) -->
+        <a href="#kisah" data-section="kisah" aria-label="Kisah Cinta" class="nav-icon-link group relative w-10 h-10 rounded-full flex items-center justify-center hover:text-charcoal hover:bg-alabaster transition-all duration-300">
+            <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+            <span class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-charcoal text-ivory text-[9px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-sm">Kisah</span>
+        </a>
+
+        <!-- Galeri (Gallery) -->
+        <a href="#galeri" data-section="galeri" aria-label="Galeri Foto" class="nav-icon-link group relative w-10 h-10 rounded-full flex items-center justify-center hover:text-charcoal hover:bg-alabaster transition-all duration-300">
+            <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="16" rx="2" stroke-width="1.5"/>
+                <circle cx="8.5" cy="9.5" r="1.5" stroke-width="1.5"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15l-5-5L5 20"/>
+            </svg>
+            <span class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-charcoal text-ivory text-[9px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-sm">Galeri</span>
+        </a>
+
+        <!-- RSVP & Ucapan -->
+        <a href="#rsvp" data-section="rsvp" aria-label="RSVP & Ucapan" class="nav-icon-link group relative w-10 h-10 rounded-full flex items-center justify-center hover:text-charcoal hover:bg-alabaster transition-all duration-300">
+            <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h8M8 14h5m-9 6l1.4-3.8A8 8 0 1112 20a8.3 8.3 0 01-3.8-.9L4 20z"/>
+            </svg>
+            <span class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-charcoal text-ivory text-[9px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-sm">RSVP</span>
+        </a>
+    </nav>
+
+    <!-- ==========================================
+         2. MAIN INVITATION CONTENT & HERO SECTION
+    =========================================== -->
+    <main id="main-content" class="max-w-4xl mx-auto px-4 sm:px-8">
+        <section id="hero" class="min-h-screen flex flex-col justify-between items-center text-center py-12 sm:py-16 sm:justify-center">
+            <div class="my-10 w-full max-w-lg mx-auto reveal">
+                <!-- Editorial Arch Hero Image with Asymmetrical Watercolor Florals & Branches -->
+                <div class="relative mx-auto w-64 h-80 sm:w-80 sm:h-[420px] mb-10 p-2 border border-sand arch-frame bg-ivory">
+                    <!-- Rich Top-Right Asymmetrical Watercolor Eucalyptus, Rose & Anemone Garland -->
+                    <svg class="absolute -top-10 -right-12 w-40 h-44 sm:w-52 sm:h-56 pointer-events-none z-20 botanical-sway-tr" viewBox="0 0 220 240">
+                        <g filter="url(#botanical-watercolor)">
+                            <path d="M25,15 Q115,45 168,125 Q188,165 192,215" stroke="url(#wc-twig-ochre)" stroke-width="1.6" fill="none" stroke-linecap="round" />
+                            <path d="M95,38 Q155,22 198,48" stroke="url(#wc-twig-ochre)" stroke-width="1.1" fill="none" stroke-linecap="round" />
+                            <path d="M142,88 Q105,135 112,185" stroke="url(#wc-twig-ochre)" stroke-width="1.1" fill="none" stroke-linecap="round" />
+                            <use href="#motif-eucalyptus-leaf" transform="translate(72,32) rotate(-55) scale(0.75)" />
+                            <use href="#motif-olive-leaf" transform="translate(118,52) rotate(45) scale(0.8)" />
+                            <use href="#motif-eucalyptus-leaf" transform="translate(155,95) rotate(75) scale(0.82)" />
+                            <use href="#motif-olive-leaf" transform="translate(175,148) rotate(115) scale(0.78)" />
+                            <use href="#motif-eucalyptus-leaf" transform="translate(152,32) rotate(75) scale(0.68)" />
+                            <use href="#motif-babys-breath" transform="translate(105,65) rotate(-135) scale(0.85)" />
+                            <use href="#motif-babys-breath" transform="translate(168,125) rotate(95) scale(0.78)" />
+                            <use href="#motif-wild-rose" transform="translate(128,68) scale(0.95)" />
+                            <use href="#motif-anemone-flower" transform="translate(162,112) scale(0.82)" />
+                            <use href="#motif-blush-bud" transform="translate(42,20) rotate(-65) scale(0.68)" />
+                            <use href="#motif-blush-bud" transform="translate(192,45) rotate(85) scale(0.65)" />
+                            <use href="#motif-blush-bud" transform="translate(188,195) rotate(155) scale(0.68)" />
+                        </g>
+                    </svg>
+
+                    <!-- Rich Bottom-Left Asymmetrical Watercolor Olive, Anemone & Wild Rose Garland -->
+                    <svg class="absolute -bottom-9 -left-12 w-40 h-44 sm:w-52 sm:h-56 pointer-events-none z-20 botanical-sway-bl" viewBox="0 0 220 240">
+                        <g filter="url(#botanical-watercolor)">
+                            <path d="M195,225 Q105,195 52,115 Q32,75 28,25" stroke="url(#wc-twig-ochre)" stroke-width="1.6" fill="none" stroke-linecap="round" />
+                            <path d="M125,202 Q65,218 22,192" stroke="url(#wc-twig-ochre)" stroke-width="1.1" fill="none" stroke-linecap="round" />
+                            <use href="#motif-olive-leaf" transform="translate(148,208) rotate(125) scale(0.75)" />
+                            <use href="#motif-eucalyptus-leaf" transform="translate(102,188) rotate(-135) scale(0.82)" />
+                            <use href="#motif-olive-leaf" transform="translate(65,145) rotate(-105) scale(0.8)" />
+                            <use href="#motif-eucalyptus-leaf" transform="translate(45,92) rotate(-65) scale(0.76)" />
+                            <use href="#motif-babys-breath" transform="translate(115,175) rotate(45) scale(0.85)" />
+                            <use href="#motif-babys-breath" transform="translate(52,115) rotate(-85) scale(0.78)" />
+                            <use href="#motif-anemone-flower" transform="translate(92,172) scale(0.95)" />
+                            <use href="#motif-wild-rose" transform="translate(58,128) scale(0.82)" />
+                            <use href="#motif-blush-bud" transform="translate(178,220) rotate(115) scale(0.68)" />
+                            <use href="#motif-blush-bud" transform="translate(28,195) rotate(-95) scale(0.65)" />
+                            <use href="#motif-blush-bud" transform="translate(32,45) rotate(-25) scale(0.68)" />
+                        </g>
+                    </svg>
+
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1000&q=80" 
+                         alt="Arka & Nadhira Editorial" 
+                         class="w-full h-full object-cover arch-frame"
+                         onerror="this.src='https://placehold.co/800x1000/F3F1EC/6B7A6A?text=Arka+%26+Nadhira'">
+                    <!-- Subtle Date Badge with Delicate Twig Tendril Behind -->
+                    <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center">
+                        <svg class="absolute w-64 h-12 pointer-events-none -z-10 opacity-90" viewBox="0 0 260 50">
+                            <g filter="url(#botanical-watercolor)">
+                                <path d="M10,28 Q70,18 130,25 T250,22" stroke="url(#wc-twig-ochre)" stroke-width="1.2" fill="none" stroke-linecap="round" />
+                                <use href="#motif-olive-leaf" transform="translate(42,24) rotate(-70) scale(0.48)" />
+                                <use href="#motif-eucalyptus-leaf" transform="translate(68,23) rotate(65) scale(0.45)" />
+                                <use href="#motif-blush-bud" transform="translate(25,26) rotate(-80) scale(0.48)" />
+                                <use href="#motif-olive-leaf" transform="translate(218,24) rotate(70) scale(0.48)" />
+                                <use href="#motif-eucalyptus-leaf" transform="translate(192,24) rotate(-65) scale(0.45)" />
+                                <use href="#motif-blush-bud" transform="translate(235,23) rotate(80) scale(0.48)" />
+                            </g>
+                        </svg>
+                        <div class="bg-ivory border border-sand px-5 py-1.5 rounded-full shadow-sm">
+                            <span class="font-serif italic text-sm tracking-widest text-charcoal">12 . 12 . 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="font-serif text-5xl sm:text-7xl font-normal tracking-tight text-charcoal mt-6 mb-4">
+                    Arka <span class="italic font-light text-sage">&amp;</span> Nadhira
+                </h1>
+            </div>
+
+            <!-- Subtle Scroll Indicator -->
+            <a href="#ayat" class="flex flex-col items-center gap-2 text-taupe hover:text-charcoal transition-colors reveal">
+                <span class="text-[10px] uppercase tracking-[0.25em]">Scroll Down</span>
+                <div class="w-[1px] h-10 bg-sand relative overflow-hidden">
+                    <div class="w-full h-1/2 bg-sage animate-bounce"></div>
+                </div>
+            </a>
+        </section>
+
+        <hr class="border-sand/70">
+
+        <!-- ==========================================
+             3. QUOTE / AYAT SECTION
+        =========================================== -->
+        <section id="ayat" class="py-20 sm:py-28 text-center max-w-2xl mx-auto">
+            <div class="reveal">
+                <!-- Upper Olive Crown & Rosebuds -->
+                <svg class="w-56 h-16 mx-auto mb-5 opacity-95" viewBox="0 0 360 60">
+                    <use href="#motif-divider-branch" />
+                </svg>
+                <blockquote class="font-serif italic text-xl sm:text-2xl leading-relaxed text-charcoal mb-6 px-2">
+                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+                </blockquote>
+                <cite class="not-italic text-xs uppercase tracking-[0.25em] text-taupe block mb-6">
+                    &mdash; QS. Ar-Rum: 21
+                </cite>
+                <!-- Lower Inverted Delicate Olive & Bud Sprig -->
+                <svg class="w-44 h-12 mx-auto opacity-80" viewBox="0 0 360 60">
+                    <use href="#motif-divider-branch" transform="translate(360, 60) rotate(180)" />
+                </svg>
+            </div>
+        </section>
+
+        <hr class="border-sand/70">
+
+        <!-- ==========================================
+             4. MEMPELAI (THE COUPLE) SECTION
+        =========================================== -->
+        <section id="mempelai" class="py-20 sm:py-28">
+            <div class="text-center max-w-xl mx-auto mb-16 reveal">
+                <svg class="w-48 h-12 mx-auto mb-3 opacity-85" viewBox="0 0 360 60">
+                    <use href="#motif-divider-branch" />
+                </svg>
+                <span class="text-xs uppercase tracking-[0.3em] text-sage block mb-3">Assalamualaikum Warahmatullahi Wabarakatuh</span>
+                <p class="text-sm text-taupe leading-relaxed font-light">
+                    Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta’ala, kami bermaksud menyelenggarakan acara pernikahan putra-putri kami:
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-11 gap-10 sm:gap-6 items-center">
+                <!-- Groom Profile Card -->
+                <div class="md:col-span-5 relative flex flex-col items-center text-center reveal">
+                    <!-- Soft Watercolor Aura Behind Groom Photo -->
+                    <svg class="absolute -top-6 w-72 h-72 pointer-events-none -z-10 opacity-80" viewBox="0 0 300 300">
+                        <g filter="url(#watercolor-wash)">
+                            <circle cx="140" cy="150" r="95" fill="#8A9A86" fill-opacity="0.22" />
+                            <circle cx="175" cy="130" r="75" fill="#E8D8D0" fill-opacity="0.3" />
+                        </g>
+                    </svg>
+                    <div class="relative mb-6">
+                        <!-- Outer Left Crescent Half-Wreath Embracing Groom Portrait -->
+                        <svg class="absolute -left-10 -top-4 w-36 h-72 pointer-events-none z-20 botanical-sway" viewBox="0 0 140 340">
+                            <use href="#motif-crescent-wreath-left" />
+                        </svg>
+                        <!-- Delicate Top-Right Sprig -->
+                        <svg class="absolute -top-5 -right-6 w-24 h-24 pointer-events-none z-20 botanical-sway-tr" viewBox="0 0 150 150">
+                            <g filter="url(#botanical-watercolor)">
+                                <path d="M25,25 Q85,55 125,115" stroke="url(#wc-twig-ochre)" stroke-width="1.2" fill="none" stroke-linecap="round" />
+                                <use href="#motif-eucalyptus-leaf" transform="translate(68,48) rotate(55) scale(0.58)" />
+                                <use href="#motif-blush-bud" transform="translate(115,102) rotate(135) scale(0.55)" />
+                            </g>
+                        </svg>
+                        <div class="w-52 h-64 sm:w-60 sm:h-72 p-2 border border-sand rounded-2xl bg-alabaster overflow-hidden group relative z-10">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80" 
+                                 alt="Arka Pradipta" 
+                                 class="w-full h-full object-cover rounded-xl grayscale-[20%] group-hover:scale-105 transition-transform duration-700"
+                                 onerror="this.src='https://placehold.co/600x750/F3F1EC/6B7A6A?text=Arka'">
+                        </div>
+                    </div>
+                    <h3 class="font-serif text-3xl text-charcoal mb-1">Arka Pradipta, S.Ars.</h3>
+                    <p class="text-xs uppercase tracking-[0.2em] text-sage mb-4">Putra Pertama</p>
+                    <p class="text-sm text-taupe font-light leading-relaxed mb-5 max-w-xs">
+                        Dari Bapak H. Hendra Wijaya<br>&amp; Ibu Hj. Ratna Kumala
+                    </p>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-charcoal border border-sand px-4 py-1.5 rounded-full hover:border-sage hover:text-sage transition-colors">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" stroke-width="1.5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke-width="1.5"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" stroke-width="1.5"/></svg>
+                        <span>@arkapradipta</span>
+                    </a>
+                </div>
+
+                <!-- Center Intertwined Botanical "&" Emblem -->
+                <div class="md:col-span-1 flex flex-col items-center justify-center py-2 reveal">
+                    <div class="relative w-24 h-24 flex items-center justify-center">
+                        <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-90" viewBox="0 0 120 120">
+                            <g filter="url(#botanical-watercolor)">
+                                <path d="M22,95 C38,55 82,65 98,25" stroke="url(#wc-twig-ochre)" stroke-width="1.3" fill="none" stroke-linecap="round" />
+                                <path d="M25,28 C48,62 72,58 95,92" stroke="url(#wc-twig-ochre)" stroke-width="1.2" fill="none" stroke-linecap="round" />
+                                <use href="#motif-eucalyptus-leaf" transform="translate(32,72) rotate(-45) scale(0.5)" />
+                                <use href="#motif-olive-leaf" transform="translate(88,48) rotate(135) scale(0.5)" />
+                                <use href="#motif-anemone-flower" transform="translate(28,32) scale(0.52)" />
+                                <use href="#motif-wild-rose" transform="translate(92,88) scale(0.52)" />
+                            </g>
+                        </svg>
+                        <span class="relative z-10 font-serif italic text-4xl text-sage bg-ivory/80 px-2 rounded-full">&amp;</span>
+                    </div>
+                </div>
+
+                <!-- Bride Profile Card -->
+                <div class="md:col-span-5 relative flex flex-col items-center text-center reveal">
+                    <!-- Soft Watercolor Aura Behind Bride Photo -->
+                    <svg class="absolute -top-6 w-72 h-72 pointer-events-none -z-10 opacity-80" viewBox="0 0 300 300">
+                        <g filter="url(#watercolor-wash)">
+                            <circle cx="160" cy="150" r="95" fill="#E8D8D0" fill-opacity="0.35" />
+                            <circle cx="130" cy="135" r="80" fill="#A3B19B" fill-opacity="0.22" />
+                        </g>
+                    </svg>
+                    <div class="relative mb-6">
+                        <!-- Outer Right Crescent Half-Wreath Embracing Bride Portrait -->
+                        <svg class="absolute -right-10 -bottom-4 w-36 h-72 pointer-events-none z-20 botanical-sway-br" viewBox="0 0 140 340">
+                            <use href="#motif-crescent-wreath-left" transform="translate(140, 340) rotate(180)" />
+                        </svg>
+                        <!-- Delicate Top-Left Sprig -->
+                        <svg class="absolute -top-5 -left-6 w-24 h-24 pointer-events-none z-20 botanical-sway" viewBox="0 0 150 150">
+                            <g filter="url(#botanical-watercolor)">
+                                <path d="M125,25 Q65,55 25,115" stroke="url(#wc-twig-ochre)" stroke-width="1.2" fill="none" stroke-linecap="round" />
+                                <use href="#motif-olive-leaf" transform="translate(82,48) rotate(-55) scale(0.58)" />
+                                <use href="#motif-blush-bud" transform="translate(35,102) rotate(-135) scale(0.55)" />
+                            </g>
+                        </svg>
+                        <div class="w-52 h-64 sm:w-60 sm:h-72 p-2 border border-sand rounded-2xl bg-alabaster overflow-hidden group relative z-10">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" 
+                                 alt="Nadhira Maharani" 
+                                 class="w-full h-full object-cover rounded-xl grayscale-[20%] group-hover:scale-105 transition-transform duration-700"
+                                 onerror="this.src='https://placehold.co/600x750/F3F1EC/6B7A6A?text=Nadhira'">
+                        </div>
+                    </div>
+                    <h3 class="font-serif text-3xl text-charcoal mb-1">Nadhira Maharani, B.A.</h3>
+                    <p class="text-xs uppercase tracking-[0.2em] text-sage mb-4">Putri Kedua</p>
+                    <p class="text-sm text-taupe font-light leading-relaxed mb-5 max-w-xs">
+                        Dari Bapak Ir. Suryo Baskoro<br>&amp; Ibu Dra. Dewi Sartika
+                    </p>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-charcoal border border-sand px-4 py-1.5 rounded-full hover:border-sage hover:text-sage transition-colors">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" stroke-width="1.5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke-width="1.5"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" stroke-width="1.5"/></svg>
+                        <span>@nadhiramhrn</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-sand/70">
+
+        <!-- ==========================================
+             5. WAKTU & TEMPAT + LIVE COUNTDOWN
+        =========================================== -->
+        <section id="acara" class="py-20 sm:py-28">
+            <!-- Live Countdown Timer with Soft Botanical Watermark -->
+            <div class="max-w-xl mx-auto mb-14 reveal">
+                <div class="relative overflow-hidden grid grid-cols-4 gap-3 sm:gap-5 bg-alabaster border border-sand/90 rounded-2xl p-5 sm:p-7 text-center">
+                    <!-- Subtle Watercolor Branch Watermark Inside Countdown Box -->
+                    <svg class="absolute -left-6 -bottom-6 w-40 h-40 pointer-events-none opacity-35" viewBox="0 0 180 180">
+                        <g filter="url(#botanical-watercolor)">
+                            <path d="M10,170 Q65,115 145,55" stroke="url(#wc-twig-ochre)" stroke-width="1.3" fill="none" />
+                            <use href="#motif-eucalyptus-leaf" transform="translate(65,122) rotate(45) scale(0.7)" />
+                            <use href="#motif-olive-leaf" transform="translate(105,88) rotate(35) scale(0.68)" />
+                            <use href="#motif-wild-rose" transform="translate(82,108) scale(0.68)" />
+                        </g>
+                    </svg>
+                    <svg class="absolute -right-6 -top-6 w-40 h-40 pointer-events-none opacity-35" viewBox="0 0 180 180">
+                        <g filter="url(#botanical-watercolor)">
+                            <path d="M170,10 Q115,65 35,125" stroke="url(#wc-twig-ochre)" stroke-width="1.3" fill="none" />
+                            <use href="#motif-olive-leaf" transform="translate(115,58) rotate(-135) scale(0.7)" />
+                            <use href="#motif-anemone-flower" transform="translate(95,75) scale(0.68)" />
+                        </g>
+                    </svg>
+                    <div class="relative z-10">
+                        <span id="cd-days" class="font-serif text-3xl sm:text-5xl text-charcoal block">00</span>
+                        <span class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-taupe mt-1 block">Hari</span>
+                    </div>
+                    <div class="relative z-10 border-l border-sand/80">
+                        <span id="cd-hours" class="font-serif text-3xl sm:text-5xl text-charcoal block">00</span>
+                        <span class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-taupe mt-1 block">Jam</span>
+                    </div>
+                    <div class="relative z-10 border-l border-sand/80">
+                        <span id="cd-minutes" class="font-serif text-3xl sm:text-5xl text-charcoal block">00</span>
+                        <span class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-taupe mt-1 block">Menit</span>
+                    </div>
+                    <div class="relative z-10 border-l border-sand/80">
+                        <span id="cd-seconds" class="font-serif text-3xl sm:text-5xl text-sage block">00</span>
+                        <span class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-taupe mt-1 block">Detik</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two Event Cards (Akad & Resepsi) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-10">
+                <!-- Akad Nikah Card -->
+                <div class="relative overflow-hidden bg-ivory border border-sand rounded-2xl p-8 text-center flex flex-col justify-between reveal hover:border-sage/60 transition-colors">
+                    <!-- Top-Right & Bottom-Left Botanical Watermark Sprigs -->
+                    <svg class="absolute -top-4 -right-4 w-32 h-32 pointer-events-none opacity-70" viewBox="0 0 150 150">
+                        <g filter="url(#botanical-watercolor)">
+                            <path d="M15,15 Q70,48 125,115" stroke="url(#wc-twig-ochre)" stroke-width="1.2" fill="none" />
+                            <use href="#motif-eucalyptus-leaf" transform="translate(58,48) rotate(135) scale(0.6)" />
+                            <use href="#motif-olive-leaf" transform="translate(92,82) rotate(155) scale(0.58)" />
+                            <use href="#motif-babys-breath" transform="translate(75,65) rotate(140) scale(0.58)" />
+                            <use href="#motif-anemone-flower" transform="translate(45,35) scale(0.62)" />
+                        </g>
+                    </svg>
+                    <svg class="absolute -bottom-5 -left-5 w-32 h-32 pointer-events-none opacity-55" viewBox="0 0 150 150">
+                        <g filter="url(#botanical-watercolor)">
+                            <path d="M135,135 Q80,102 25,35" stroke="url(#wc-twig-ochre)" stroke-width="1.1" fill="none" />
+                            <use href="#motif-olive-leaf" transform="translate(92,102) rotate(-45) scale(0.58)" />
+                            <use href="#motif-eucalyptus-leaf" transform="translate(58,68) rotate(-25) scale(0.55)" />
+                            <use href="#motif-blush-bud" transform="translate(38,48) rotate(-35) scale(0.55)" />
+                        </g>
+                    </svg>
+                    <div class="relative z-10">
+                        <span class="inline-block text-[11px] uppercase tracking-[0.25em] text-sage bg-sage-light px-3.5 py-1 rounded-full mb-4">Sakral</span>
+                        <h3 class="font-serif text-3xl text-charcoal mb-2">Akad Nikah</h3>
+                        <p class="text-sm text-taupe mb-6">Sabtu, 12 Desember 2026</p>
+                        
+                        <div class="border-y border-sand/70 py-4 my-4">
+                            <p class="text-xs uppercase tracking-[0.2em] text-taupe mb-1">Pukul</p>
+                            <p class="font-medium text-charcoal text-base">08.00 &ndash; 10.00 WIB</p>
+                        </div>
+
+                        <div class="mt-5">
+                            <p class="font-serif text-xl text-charcoal font-medium mb-1">Glasshouse Rumah Sarwono</p>
+                            <p class="text-xs text-taupe leading-relaxed max-w-xs mx-auto">
+                                Jl. Raya Pasar Minggu No.Km 18.2, Pejaten Timur, Pasar Minggu, Jakarta Selatan
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resepsi Card -->
+                <div class="relative overflow-hidden bg-ivory border border-sand rounded-2xl p-8 text-center flex flex-col justify-between reveal hover:border-sage/60 transition-colors">
+                    <!-- Top-Right & Bottom-Left Botanical Watermark Sprigs -->
+                    <svg class="absolute -top-4 -right-4 w-32 h-32 pointer-events-none opacity-70" viewBox="0 0 150 150">
+                        <g filter="url(#botanical-watercolor)">
+                            <path d="M15,15 Q70,48 125,115" stroke="url(#wc-twig-ochre)" stroke-width="1.2" fill="none" />
+                            <use href="#motif-olive-leaf" transform="translate(58,48) rotate(135) scale(0.6)" />
+                            <use href="#motif-eucalyptus-leaf" transform="translate(92,82) rotate(155) scale(0.58)" />
+                            <use href="#motif-babys-breath" transform="translate(75,65) rotate(140) scale(0.58)" />
+                            <use href="#motif-wild-rose" transform="translate(45,35) scale(0.62)" />
+                        </g>
+                    </svg>
+                    <svg class="absolute -bottom-5 -left-5 w-32 h-32 pointer-events-none opacity-55" viewBox="0 0 150 150">
+                        <g filter="url(#botanical-watercolor)">
+                            <path d="M135,135 Q80,102 25,35" stroke="url(#wc-twig-ochre)" stroke-width="1.1" fill="none" />
+                            <use href="#motif-eucalyptus-leaf" transform="translate(92,102) rotate(-45) scale(0.58)" />
+                            <use href="#motif-olive-leaf" transform="translate(58,68) rotate(-25) scale(0.55)" />
+                            <use href="#motif-blush-bud" transform="translate(38,48) rotate(-35) scale(0.55)" />
+                        </g>
+                    </svg>
+                    <div class="relative z-10">
+                        <span class="inline-block text-[11px] uppercase tracking-[0.25em] text-sage bg-sage-light px-3.5 py-1 rounded-full mb-4">Syukuran</span>
+                        <h3 class="font-serif text-3xl text-charcoal mb-2">Resepsi Pernikahan</h3>
+                        <p class="text-sm text-taupe mb-6">Sabtu, 12 Desember 2026</p>
+                        
+                        <div class="border-y border-sand/70 py-4 my-4">
+                            <p class="text-xs uppercase tracking-[0.2em] text-taupe mb-1">Pukul</p>
+                            <p class="font-medium text-charcoal text-base">11.00 &ndash; 14.00 WIB</p>
+                        </div>
+
+                        <div class="mt-5">
+                            <p class="font-serif text-xl text-charcoal font-medium mb-1">Main Hall Rumah Sarwono</p>
+                            <p class="text-xs text-taupe leading-relaxed max-w-xs mx-auto">
+                                Jl. Raya Pasar Minggu No.Km 18.2, Pejaten Timur, Pasar Minggu, Jakarta Selatan
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons: Google Maps & Add to Calendar -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal">
+                <a href="https://maps.google.com/?q=Rumah+Sarwono+Jakarta+Selatan" target="_blank" rel="noopener noreferrer" 
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-charcoal text-ivory text-xs uppercase tracking-[0.2em] rounded-full hover:bg-sage transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    <span>Petunjuk Lokasi (Google Maps)</span>
+                </a>
+
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=The+Wedding+of+Arka+%26+Nadhira&dates=20261212T010000Z/20261212T070000Z&details=Acara+Akad+dan+Resepsi+Pernikahan+Arka+%26+Nadhira&location=Rumah+Sarwono,+Jakarta+Selatan" 
+                   target="_blank" rel="noopener noreferrer"
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-ivory text-charcoal border border-sand text-xs uppercase tracking-[0.2em] rounded-full hover:border-charcoal transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <span>Simpan ke Kalender</span>
+                </a>
+            </div>
+        </section>
+
+        <hr class="border-sand/70">
+
+        <!-- ==========================================
+             6. KISAH CINTA (LOVE STORY TIMELINE)
+        =========================================== -->
+        <section id="kisah" class="py-20 sm:py-28">
+            <div class="text-center max-w-xl mx-auto mb-16 reveal">
+                <svg class="w-48 h-12 mx-auto mb-3 opacity-85" viewBox="0 0 360 60">
+                    <use href="#motif-divider-branch" />
+                </svg>
+                <span class="text-xs uppercase tracking-[0.3em] text-sage block mb-3">Perjalanan Kami</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-charcoal">Kisah Cinta</h2>
+            </div>
+
+            <div class="relative max-w-2xl mx-auto pl-8 sm:pl-0">
+                <!-- Organic Watercolor Vine & Branch Vertical Stem -->
+                <svg class="absolute left-6 sm:left-1/2 top-0 bottom-0 w-16 h-full -translate-x-1/2 pointer-events-none" viewBox="0 0 80 600" preserveAspectRatio="none">
+                    <g filter="url(#botanical-watercolor)">
+                        <path d="M40,10 C28,110 52,210 38,310 C26,410 50,500 40,590" stroke="url(#wc-twig-ochre)" stroke-width="1.8" fill="none" stroke-linecap="round" />
+                        <use href="#motif-olive-leaf" transform="translate(34,85) rotate(-55) scale(0.45)" />
+                        <use href="#motif-eucalyptus-leaf" transform="translate(45,165) rotate(55) scale(0.45)" />
+                        <use href="#motif-olive-leaf" transform="translate(35,265) rotate(-60) scale(0.45)" />
+                        <use href="#motif-eucalyptus-leaf" transform="translate(44,365) rotate(60) scale(0.45)" />
+                        <use href="#motif-olive-leaf" transform="translate(35,465) rotate(-55) scale(0.45)" />
+                    </g>
+                </svg>
+
+                <!-- Timeline Item 1 -->
+                <div class="relative flex flex-col sm:flex-row items-start mb-14 reveal">
+                    <div class="sm:w-1/2 sm:pr-12 sm:text-right mb-2 sm:mb-0 pl-6 sm:pl-0">
+                        <span class="text-xs uppercase tracking-[0.2em] text-sage block mb-1">September 2022</span>
+                        <h3 class="font-serif text-2xl text-charcoal mb-2">Pertemuan Pertama</h3>
+                        <p class="text-xs sm:text-sm text-taupe font-light leading-relaxed">
+                            Berawal dari sebuah pameran arsitektur dan seni di Jakarta. Percakapan singkat mengenai secangkir kopi dan desain klasik menjadi awal cerita kami.
+                        </p>
+                    </div>
+                    <!-- Botanical Blossom Node 1 -->
+                    <div class="absolute left-[-8px] sm:left-1/2 w-10 h-10 -translate-x-1/2 -mt-1 flex items-center justify-center">
+                        <svg class="w-10 h-10" viewBox="-25 -25 50 50">
+                            <g filter="url(#botanical-watercolor)">
+                                <use href="#motif-eucalyptus-leaf" transform="rotate(-65) scale(0.5)" />
+                                <use href="#motif-anemone-flower" transform="scale(0.68)" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="sm:w-1/2 sm:pl-12 hidden sm:block"></div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative flex flex-col sm:flex-row items-start mb-14 reveal">
+                    <div class="sm:w-1/2 sm:pr-12 hidden sm:block"></div>
+                    <!-- Botanical Blossom Node 2 -->
+                    <div class="absolute left-[-8px] sm:left-1/2 w-10 h-10 -translate-x-1/2 -mt-1 flex items-center justify-center">
+                        <svg class="w-10 h-10" viewBox="-25 -25 50 50">
+                            <g filter="url(#botanical-watercolor)">
+                                <use href="#motif-olive-leaf" transform="rotate(65) scale(0.5)" />
+                                <use href="#motif-wild-rose" transform="scale(0.68)" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="sm:w-1/2 sm:pl-12 pl-6">
+                        <span class="text-xs uppercase tracking-[0.2em] text-sage block mb-1">Mei 2026</span>
+                        <h3 class="font-serif text-2xl text-charcoal mb-2">Lamaran (Khitbah)</h3>
+                        <p class="text-xs sm:text-sm text-taupe font-light leading-relaxed">
+                            Setelah melewati waktu untuk saling mengenal dan meyakinkan hati, kedua keluarga bertemu untuk mengikat janji suci menuju jenjang pernikahan.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="relative flex flex-col sm:flex-row items-start reveal">
+                    <div class="sm:w-1/2 sm:pr-12 sm:text-right pl-6 sm:pl-0">
+                        <span class="text-xs uppercase tracking-[0.2em] text-sage block mb-1">12 Desember 2026</span>
+                        <h3 class="font-serif text-2xl text-charcoal mb-2">Hari Bahagia</h3>
+                        <p class="text-xs sm:text-sm text-taupe font-light leading-relaxed">
+                            Hari di mana doa-doa kami bermuara pada satu ikatan suci pernikahan untuk membangun keluarga yang sakinah, mawaddah, warahmah.
+                        </p>
+                    </div>
+                    <!-- Botanical Blossom Node 3 -->
+                    <div class="absolute left-[-8px] sm:left-1/2 w-10 h-10 -translate-x-1/2 -mt-1 flex items-center justify-center">
+                        <svg class="w-11 h-11" viewBox="-25 -25 50 50">
+                            <g filter="url(#botanical-watercolor)">
+                                <use href="#motif-eucalyptus-leaf" transform="rotate(-75) scale(0.52)" />
+                                <use href="#motif-olive-leaf" transform="rotate(75) scale(0.52)" />
+                                <use href="#motif-anemone-flower" transform="scale(0.75)" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="sm:w-1/2 sm:pl-12 hidden sm:block"></div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-sand/70">
+
+        <!-- ==========================================
+             7. GALERI MOMEN (MINIMALIST PHOTO GRID)
+        =========================================== -->
+        <section id="galeri" class="py-20 sm:py-28">
+            <div class="text-center max-w-xl mx-auto mb-14 reveal">
+                <svg class="w-48 h-12 mx-auto mb-3 opacity-85" viewBox="0 0 360 60">
+                    <use href="#motif-divider-branch" />
+                </svg>
+                <span class="text-xs uppercase tracking-[0.3em] text-sage block mb-3">Potret Kebahagiaan</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-charcoal mb-3">Galeri Momen</h2>
+                <p class="text-xs text-taupe">Klik pada foto untuk memperbesar tampilan</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5 reveal">
+                <!-- Photo 1 -->
+                <div class="overflow-hidden rounded-xl border border-sand aspect-[4/5] cursor-pointer group" onclick="openLightbox(0)">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" 
+                         alt="Galeri 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                         onerror="this.src='https://placehold.co/600x750/F3F1EC/6B7A6A?text=Momen+1'">
+                </div>
+                <!-- Photo 2 -->
+                <div class="overflow-hidden rounded-xl border border-sand aspect-[4/5] cursor-pointer group" onclick="openLightbox(1)">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80" 
+                         alt="Galeri 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                         onerror="this.src='https://placehold.co/600x750/F3F1EC/6B7A6A?text=Momen+2'">
+                </div>
+                <!-- Photo 3 -->
+                <div class="overflow-hidden rounded-xl border border-sand aspect-[4/5] cursor-pointer group" onclick="openLightbox(2)">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80" 
+                         alt="Galeri 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                         onerror="this.src='https://placehold.co/600x750/F3F1EC/6B7A6A?text=Momen+3'">
+                </div>
+                <!-- Photo 4 -->
+                <div class="overflow-hidden rounded-xl border border-sand aspect-[4/5] cursor-pointer group" onclick="openLightbox(3)">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=900&q=80" 
+                         alt="Galeri 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                         onerror="this.src='https://placehold.co/600x750/F3F1EC/6B7A6A?text=Momen+4'">
+                </div>
+                <!-- Photo 5 -->
+                <div class="overflow-hidden rounded-xl border border-sand aspect-[4/5] cursor-pointer group" onclick="openLightbox(4)">
+                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80" 
+                         alt="Galeri 5" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                         onerror="this.src='https://placehold.co/600x750/F3F1EC/6B7A6A?text=Momen+5'">
+                </div>
+                <!-- Photo 6 -->
+                <div class="overflow-hidden rounded-xl border border-sand aspect-[4/5] cursor-pointer group" onclick="openLightbox(5)">
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=900&q=80" 
+                         alt="Galeri 6" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                         onerror="this.src='https://placehold.co/600x750/F3F1EC/6B7A6A?text=Momen+6'">
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-sand/70">
+
+        <!-- ==========================================
+             8. AMPLOP DIGITAL (WEDDING GIFT)
+        =========================================== -->
+        <section id="amplop" class="py-20 sm:py-28">
+            <div class="text-center max-w-xl mx-auto mb-12 reveal">
+                <svg class="w-48 h-12 mx-auto mb-3 opacity-85" viewBox="0 0 360 60">
+                    <use href="#motif-divider-branch" />
+                </svg>
+                <span class="text-xs uppercase tracking-[0.3em] text-sage block mb-3">Tanda Kasih</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-charcoal mb-4">Amplop Digital</h2>
+                <p class="text-sm text-taupe font-light leading-relaxed">
+                    Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih, Anda dapat mengirimkan kado secara *cashless* melalui rekening berikut:
+                </p>
+            </div>
+
+            <div class="max-w-xl mx-auto reveal">
+                <!-- Toggle Gift Details Button -->
+                <div class="text-center mb-8">
+                    <button onclick="toggleGiftCard()" id="gift-toggle-btn" class="inline-flex items-center gap-2.5 px-7 py-3 bg-alabaster border border-sand text-charcoal text-xs uppercase tracking-[0.2em] rounded-full hover:border-sage transition-colors">
+                        <svg class="w-4 h-4 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                        <span id="gift-toggle-text">Sembunyikan Rekening</span>
+                    </button>
+                </div>
+
+                <!-- Collapsible Bank Cards Container -->
+                <div id="gift-cards-container" class="space-y-4 transition-all duration-500">
+                    <!-- Bank BCA -->
+                    <div class="relative overflow-hidden bg-alabaster/70 border border-sand rounded-2xl p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <svg class="absolute -bottom-4 -right-4 w-28 h-28 pointer-events-none opacity-55" viewBox="0 0 140 140">
+                            <g filter="url(#botanical-watercolor)">
+                                <path d="M125,125 Q75,85 25,35" stroke="url(#wc-twig-ochre)" stroke-width="1.1" fill="none" />
+                                <use href="#motif-eucalyptus-leaf" transform="translate(80,85) rotate(-45) scale(0.55)" />
+                                <use href="#motif-anemone-flower" transform="translate(62,68) scale(0.55)" />
+                                <use href="#motif-blush-bud" transform="translate(38,45) rotate(-45) scale(0.5)" />
+                            </g>
+                        </svg>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xs font-semibold uppercase tracking-[0.2em] text-sage bg-sage-light px-2.5 py-0.5 rounded">Bank BCA</span>
+                            </div>
+                            <p id="rek-bca" class="font-serif text-2xl sm:text-3xl text-charcoal tracking-wider font-medium mb-1">8720 4591 82</p>
+                            <p class="text-xs text-taupe">a.n. Arka Pradipta</p>
+                        </div>
+                        <button onclick="copyAccount('8720459182', 'Nomor rekening BCA berhasil disalin')" 
+                                class="relative z-10 self-start sm:self-center inline-flex items-center gap-2 px-5 py-2.5 bg-ivory border border-sand rounded-full text-xs text-charcoal hover:border-charcoal active:scale-95 transition-all">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                            <span>Salin Nomor Rekening</span>
+                        </button>
+                    </div>
+
+                    <!-- Bank Mandiri -->
+                    <div class="relative overflow-hidden bg-alabaster/70 border border-sand rounded-2xl p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <svg class="absolute -bottom-4 -right-4 w-28 h-28 pointer-events-none opacity-55" viewBox="0 0 140 140">
+                            <g filter="url(#botanical-watercolor)">
+                                <path d="M125,125 Q75,85 25,35" stroke="url(#wc-twig-ochre)" stroke-width="1.1" fill="none" />
+                                <use href="#motif-olive-leaf" transform="translate(80,85) rotate(-45) scale(0.55)" />
+                                <use href="#motif-wild-rose" transform="translate(62,68) scale(0.55)" />
+                                <use href="#motif-blush-bud" transform="translate(38,45) rotate(-45) scale(0.5)" />
+                            </g>
+                        </svg>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xs font-semibold uppercase tracking-[0.2em] text-sage bg-sage-light px-2.5 py-0.5 rounded">Bank Mandiri</span>
+                            </div>
+                            <p id="rek-mandiri" class="font-serif text-2xl sm:text-3xl text-charcoal tracking-wider font-medium mb-1">1240 0098 7654 3</p>
+                            <p class="text-xs text-taupe">a.n. Nadhira Maharani</p>
+                        </div>
+                        <button onclick="copyAccount('1240009876543', 'Nomor rekening Mandiri berhasil disalin')" 
+                                class="relative z-10 self-start sm:self-center inline-flex items-center gap-2 px-5 py-2.5 bg-ivory border border-sand rounded-full text-xs text-charcoal hover:border-charcoal active:scale-95 transition-all">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                            <span>Salin Nomor Rekening</span>
+                        </button>
+                    </div>
+
+                    <!-- Physical Gift Address -->
+                    <div class="bg-ivory border border-sand/80 rounded-2xl p-6 text-center">
+                        <p class="text-xs uppercase tracking-[0.2em] text-sage mb-1">Pengiriman Kado Fisik</p>
+                        <p class="text-xs text-taupe leading-relaxed max-w-md mx-auto mb-3">
+                            Jl. Kemang Timur Raya No. 45, Bangka, Kec. Mampang Prapatan, Kota Jakarta Selatan, DKI Jakarta 12730
+                        </p>
+                        <button onclick="copyAccount('Jl. Kemang Timur Raya No. 45, Bangka, Kec. Mampang Prapatan, Kota Jakarta Selatan, DKI Jakarta 12730', 'Alamat pengiriman kado berhasil disalin')" 
+                                class="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-wider text-charcoal underline underline-offset-4 hover:text-sage">
+                            <span>Salin Alamat</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-sand/70">
+
+        <!-- ==========================================
+             9. RSVP & UCAPAN DOA SECTION
+        =========================================== -->
+        <section id="rsvp" class="py-20 sm:py-28">
+            <div class="text-center max-w-xl mx-auto mb-14 reveal">
+                <svg class="w-48 h-12 mx-auto mb-3 opacity-85" viewBox="0 0 360 60">
+                    <use href="#motif-divider-branch" />
+                </svg>
+                <span class="text-xs uppercase tracking-[0.3em] text-sage block mb-3">Konfirmasi &amp; Doa Restu</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-charcoal mb-4">RSVP &amp; Ucapan</h2>
+                <p class="text-sm text-taupe font-light">
+                    Mohon konfirmasi kehadiran Anda serta tuliskan doa dan harapan terbaik untuk perjalanan baru kami.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                <!-- RSVP Form with Corner Watercolor Botanical Accent -->
+                <div class="relative overflow-hidden lg:col-span-5 bg-alabaster/80 border border-sand rounded-2xl p-6 sm:p-8 reveal">
+                    <svg class="absolute -top-5 -right-5 w-32 h-32 pointer-events-none opacity-60" viewBox="0 0 150 150">
+                        <g filter="url(#botanical-watercolor)">
+                            <path d="M15,15 Q70,50 125,115" stroke="url(#wc-twig-ochre)" stroke-width="1.2" fill="none" />
+                            <use href="#motif-eucalyptus-leaf" transform="translate(58,48) rotate(135) scale(0.58)" />
+                            <use href="#motif-olive-leaf" transform="translate(92,82) rotate(155) scale(0.55)" />
+                            <use href="#motif-anemone-flower" transform="translate(45,35) scale(0.6)" />
+                        </g>
+                    </svg>
+                    <form id="rsvp-form" onsubmit="submitRsvp(event)" class="relative z-10 space-y-5">
+                        <div>
+                            <label for="rsvp-name" class="block text-xs uppercase tracking-[0.15em] text-charcoal mb-2">Nama Lengkap *</label>
+                            <input type="text" id="rsvp-name" required placeholder="Masukkan nama Anda" 
+                                   class="w-full px-4 py-3 bg-ivory border border-sand rounded-xl text-sm text-charcoal placeholder:text-taupe/60 focus:outline-none focus:border-sage transition-colors">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="rsvp-status" class="block text-xs uppercase tracking-[0.15em] text-charcoal mb-2">Konfirmasi *</label>
+                                <select id="rsvp-status" onchange="handleAttendanceChange()" required 
+                                        class="w-full px-4 py-3 bg-ivory border border-sand rounded-xl text-sm text-charcoal focus:outline-none focus:border-sage transition-colors">
+                                    <option value="Hadir">Hadir</option>
+                                    <option value="Berhalangan">Berhalangan</option>
+                                </select>
+                            </div>
+
+                            <div id="guest-count-wrapper">
+                                <label for="rsvp-guests" class="block text-xs uppercase tracking-[0.15em] text-charcoal mb-2">Jumlah Tamu</label>
+                                <select id="rsvp-guests" 
+                                        class="w-full px-4 py-3 bg-ivory border border-sand rounded-xl text-sm text-charcoal focus:outline-none focus:border-sage transition-colors">
+                                    <option value="1 Orang">1 Orang</option>
+                                    <option value="2 Orang">2 Orang</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="rsvp-message" class="block text-xs uppercase tracking-[0.15em] text-charcoal mb-2">Ucapan &amp; Doa *</label>
+                            <textarea id="rsvp-message" rows="4" required placeholder="Tuliskan doa restu untuk kedua mempelai..." 
+                                      class="w-full px-4 py-3 bg-ivory border border-sand rounded-xl text-sm text-charcoal placeholder:text-taupe/60 focus:outline-none focus:border-sage transition-colors resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 bg-charcoal text-ivory text-xs uppercase tracking-[0.2em] rounded-full hover:bg-sage transition-colors shadow-sm active:scale-[0.99]">
+                            Kirim Konfirmasi &amp; Ucapan
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Live Wishes & Attendance Stats -->
+                <div class="lg:col-span-7 reveal">
+                    <!-- Attendance Summary Pills -->
+                    <div class="grid grid-cols-3 gap-3 mb-6 text-center">
+                        <div class="bg-alabaster/70 border border-sand rounded-xl p-3">
+                            <span id="stat-total" class="font-serif text-2xl text-charcoal block">4</span>
+                            <span class="text-[10px] uppercase tracking-wider text-taupe">Total Ucapan</span>
+                        </div>
+                        <div class="bg-sage-light/60 border border-sage/30 rounded-xl p-3">
+                            <span id="stat-hadir" class="font-serif text-2xl text-sage block">3</span>
+                            <span class="text-[10px] uppercase tracking-wider text-sage">Hadir</span>
+                        </div>
+                        <div class="bg-alabaster/70 border border-sand rounded-xl p-3">
+                            <span id="stat-absen" class="font-serif text-2xl text-taupe block">1</span>
+                            <span class="text-[10px] uppercase tracking-wider text-taupe">Berhalangan</span>
+                        </div>
+                    </div>
+
+                    <!-- Scrollable Wishes Feed -->
+                    <div id="wishes-feed" class="space-y-3.5 max-h-[420px] overflow-y-auto pr-1"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             10. CLOSING FOOTER
+        =========================================== -->
+        <footer class="py-16 sm:py-24 text-center border-t border-sand/70">
+            <div class="reveal max-w-md mx-auto">
+                <svg class="w-48 h-12 mx-auto mb-4 opacity-85" viewBox="0 0 360 60">
+                    <use href="#motif-divider-branch" />
+                </svg>
+                <p class="text-xs sm:text-sm text-taupe font-light leading-relaxed mb-6">
+                    Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kami.
+                </p>
+                <p class="text-xs uppercase tracking-[0.25em] text-taupe mb-2">Kami yang berbahagia</p>
+                <h2 class="font-serif text-4xl sm:text-5xl text-charcoal mb-8">
+                    Arka <span class="italic font-light text-sage">&amp;</span> Nadhira
+                </h2>
+                <p class="pb-8 text-[10px] uppercase tracking-[0.25em] text-taupe/70">12.12.2026</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- ==========================================
+         LIGHTBOX MODAL & TOAST NOTIFICATION
+    =========================================== -->
+    <div id="lightbox-modal" onclick="closeLightbox(event)" class="fixed inset-0 z-50 bg-charcoal/90 backdrop-blur-sm hidden items-center justify-center p-4">
+        <button type="button" onclick="closeLightbox(event, true)" class="absolute top-6 right-6 text-ivory/80 hover:text-ivory p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <button type="button" onclick="changeLightboxSlide(-1, event)" class="absolute left-4 sm:left-8 text-ivory/80 hover:text-ivory p-3 bg-charcoal/40 rounded-full">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <img id="lightbox-img" src="" alt="Preview Galeri" class="max-h-[85vh] max-w-[90vw] object-contain rounded-xl shadow-2xl border border-sand/20">
+        <button type="button" onclick="changeLightboxSlide(1, event)" class="absolute right-4 sm:right-8 text-ivory/80 hover:text-ivory p-3 bg-charcoal/40 rounded-full">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/></svg>
+        </button>
+    </div>
+
+    <!-- Custom Toast Notification -->
+    <div id="toast" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-charcoal text-ivory px-5 py-2.5 rounded-full shadow-lg text-xs tracking-wider opacity-0 pointer-events-none -translate-y-3 transition-all duration-300">
+        <span id="toast-message">Tersalin!</span>
+    </div>
+
+    <!-- ==========================================
+         APPLICATION SCRIPTS
+    =========================================== -->
+    <script>
+        /* -----------------------------------------------------------
+           1. GUEST NAME PARSER FROM URL (?to=Nama+Tamu)
+        ------------------------------------------------------------ */
+        function initGuestName() {
+            const params = new URLSearchParams(window.location.search);
+            const guest = params.get('to');
+            const displayEl = document.getElementById('guest-name-display');
+            const rsvpNameInput = document.getElementById('rsvp-name');
+            if (guest && guest.trim() !== '') {
+                if (displayEl) displayEl.textContent = guest.trim();
+                if (rsvpNameInput) rsvpNameInput.value = guest.trim();
+            }
+        }
+
+        /* -----------------------------------------------------------
+           2. COVER OVERLAY GATE & AMBIENT PIANO SYNTH (TONE.JS)
+        ------------------------------------------------------------ */
+        let isMusicPlaying = false;
+        let synth = null;
+        let melodyLoop = null;
+        let openTransitionTimeout = null;
+
+        function setupAmbientMusic() {
+            if (synth || typeof Tone === 'undefined') return;
+            try {
+                synth = new Tone.PolySynth(Tone.Synth, {
+                    oscillator: { type: "sine" },
+                    envelope: { attack: 0.8, decay: 1.5, sustain: 0.4, release: 2.5 }
+                }).toDestination();
+                synth.volume.value = -16;
+
+                const chords = [
+                    ["C4", "E4", "G4", "B4"],
+                    ["A3", "E4", "A4", "C5"],
+                    ["F3", "C4", "F4", "A4"],
+                    ["G3", "D4", "G4", "B4"]
+                ];
+                let step = 0;
+
+                melodyLoop = new Tone.Loop((time) => {
+                    const chord = chords[step % chords.length];
+                    synth.triggerAttackRelease(chord, "2n", time);
+                    step++;
+                }, "1m");
+
+                Tone.Transport.bpm.value = 64;
+            } catch (e) {
+                console.warn("Audio initialization skipped:", e);
+            }
+        }
+
+        function playWatercolorStage() {
+            const wcLayer = document.getElementById('watercolor-transition-layer');
+            if (!wcLayer) return;
+
+            clearTimeout(openTransitionTimeout);
+            wcLayer.classList.remove('hidden', 'curtain-opening');
+            void wcLayer.offsetWidth;
+
+            wcLayer.classList.add('curtain-opening');
+
+            openTransitionTimeout = setTimeout(() => {
+                wcLayer.classList.remove('curtain-opening');
+                wcLayer.classList.add('hidden');
+            }, 2450);
+        }
+
+        function openInvitation() {
+            const gate = document.getElementById('wedding-gate');
+            const audioBtn = document.getElementById('audio-toggle-btn');
+            const petalsBtn = document.getElementById('petals-toggle-btn');
+            const ambientPetals = document.getElementById('ambient-petals-container');
+            const bottomNav = document.getElementById('bottom-nav');
+
+            // Unlock body scroll immediately so user never gets stuck
+            document.body.classList.remove('locked');
+            document.body.style.overflow = 'auto';
+
+            // 1. Trigger Garden Gate opening animation
+            playWatercolorStage();
+
+            // 2. Dissolve the cover gate with split effect
+            setTimeout(() => {
+                if (gate) {
+                    gate.classList.remove('gate-fading', 'gate-split-open');
+                    gate.classList.add('gate-split-open');
+                }
+            }, 260);
+
+            // 3. Reveal floating navigation & clean up gate after animation finishes
+            setTimeout(() => {
+                if (gate) {
+                    gate.classList.add('open');
+                    gate.style.display = 'none';
+                }
+                if (audioBtn) {
+                    audioBtn.classList.remove('opacity-0', 'pointer-events-none');
+                    audioBtn.classList.add('pointer-events-auto');
+                }
+                if (petalsBtn) {
+                    petalsBtn.classList.remove('opacity-0', 'pointer-events-none');
+                    petalsBtn.classList.add('pointer-events-auto');
+                }
+                if (ambientPetals) {
+                    ambientPetals.classList.remove('opacity-0');
+                }
+                if (bottomNav) {
+                    bottomNav.classList.remove('opacity-0', 'pointer-events-none');
+                    bottomNav.classList.add('pointer-events-auto');
+                }
+                handleScrollReveal();
+            }, 1050);
+
+            // 4. Start soft ambient music safely without blocking UI
+            if (typeof Tone !== 'undefined' && !isMusicPlaying) {
+                Tone.start().then(() => {
+                    setupAmbientMusic();
+                    Tone.Transport.start();
+                    if (melodyLoop) melodyLoop.start(0);
+                    isMusicPlaying = true;
+                    const bars = document.getElementById('music-bars');
+                    if (bars) bars.classList.add('playing');
+                }).catch((err) => {
+                    console.log("Autoplay audio blocked or unavailable:", err);
+                });
+            }
+        }
+        window.openInvitation = openInvitation;
+
+        let arePetalsActive = true;
+        function togglePetals() {
+            const ambientPetals = document.getElementById('ambient-petals-container');
+            const petalsBtn = document.getElementById('petals-toggle-btn');
+            arePetalsActive = !arePetalsActive;
+
+            if (arePetalsActive) {
+                if (ambientPetals) ambientPetals.classList.remove('hidden');
+                if (petalsBtn) {
+                    petalsBtn.classList.add('text-sage');
+                    petalsBtn.classList.remove('text-taupe/50');
+                }
+                showToast("Efek kelopak cat air diaktifkan");
+            } else {
+                if (ambientPetals) ambientPetals.classList.add('hidden');
+                if (petalsBtn) {
+                    petalsBtn.classList.remove('text-sage');
+                    petalsBtn.classList.add('text-taupe/50');
+                }
+                showToast("Efek kelopak cat air dinonaktifkan");
+            }
+        }
+        window.togglePetals = togglePetals;
+
+        function replayWatercolorOpening() {
+            const gate = document.getElementById('wedding-gate');
+            const wcLayer = document.getElementById('watercolor-transition-layer');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (wcLayer) {
+                wcLayer.classList.remove('curtain-opening');
+                wcLayer.classList.add('hidden');
+            }
+
+            if (gate) {
+                gate.style.display = 'flex';
+                void gate.offsetWidth;
+                gate.classList.remove('open', 'gate-fading', 'gate-split-open');
+            }
+            document.body.classList.add('locked');
+            document.body.style.overflow = 'hidden';
+        }
+        window.replayWatercolorOpening = replayWatercolorOpening;
+
+        function toggleMusic() {
+            const bars = document.getElementById('music-bars');
+            if (!synth) setupAmbientMusic();
+
+            if (isMusicPlaying) {
+                if (typeof Tone !== 'undefined') Tone.Transport.pause();
+                if (bars) bars.classList.remove('playing');
+                isMusicPlaying = false;
+                showToast("Musik latar dijeda");
+            } else if (typeof Tone !== 'undefined') {
+                Tone.start().then(() => {
+                    Tone.Transport.start();
+                    if (melodyLoop && melodyLoop.state !== "started") melodyLoop.start(0);
+                    if (bars) bars.classList.add('playing');
+                    isMusicPlaying = true;
+                    showToast("Musik latar diputar");
+                });
+            }
+        }
+        window.toggleMusic = toggleMusic;
+
+        /* -----------------------------------------------------------
+           3. LIVE COUNTDOWN TIMER (12 DESEMBER 2026 08:00 WIB)
+        ------------------------------------------------------------ */
+        const weddingTargetDate = new Date("2026-12-12T08:00:00+07:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = weddingTargetDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('cd-days').textContent = "00";
+                document.getElementById('cd-hours').textContent = "00";
+                document.getElementById('cd-minutes').textContent = "00";
+                document.getElementById('cd-seconds').textContent = "00";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        /* -----------------------------------------------------------
+           4. GALLERY LIGHTBOX
+        ------------------------------------------------------------ */
+        const galleryImages = [
+            "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
+            "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85",
+            "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=85",
+            "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
+            "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=85",
+            "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1200&q=85"
+        ];
+        let currentSlideIndex = 0;
+
+        function openLightbox(index) {
+            currentSlideIndex = index;
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-img');
+            img.src = galleryImages[currentSlideIndex];
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+        window.openLightbox = openLightbox;
+
+        function closeLightbox(event, force = false) {
+            if (force || event.target.id === 'lightbox-modal') {
+                const modal = document.getElementById('lightbox-modal');
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+        window.closeLightbox = closeLightbox;
+
+        function changeLightboxSlide(direction, event) {
+            event.stopPropagation();
+            currentSlideIndex = (currentSlideIndex + direction + galleryImages.length) % galleryImages.length;
+            document.getElementById('lightbox-img').src = galleryImages[currentSlideIndex];
+        }
+        window.changeLightboxSlide = changeLightboxSlide;
+
+        /* -----------------------------------------------------------
+           5. AMPLOP DIGITAL (COLLAPSE & COPY TO CLIPBOARD)
+        ------------------------------------------------------------ */
+        let isGiftVisible = true;
+
+        function toggleGiftCard() {
+            const container = document.getElementById('gift-cards-container');
+            const btnText = document.getElementById('gift-toggle-text');
+            isGiftVisible = !isGiftVisible;
+
+            if (isGiftVisible) {
+                container.classList.remove('hidden');
+                btnText.textContent = "Sembunyikan Rekening";
+            } else {
+                container.classList.add('hidden');
+                btnText.textContent = "Tampilkan Rekening";
+            }
+        }
+        window.toggleGiftCard = toggleGiftCard;
+
+        function copyAccount(textToCopy, message) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast(message || "Tersalin!");
+            } catch (err) {
+                showToast("Gagal menyalin");
+            }
+            document.body.removeChild(tempInput);
+        }
+        window.copyAccount = copyAccount;
+
+        /* -----------------------------------------------------------
+           6. RSVP & LIVE WISHES FEED
+        ------------------------------------------------------------ */
+        const wishesList = [
+            {
+                name: "Dimas Anggara & Partner",
+                status: "Hadir",
+                guests: "2 Orang",
+                message: "Selamat menempuh hidup baru Arka & Nadhira! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah dan selalu diberkahi kebahagiaan.",
+                time: "Baru saja"
+            },
+            {
+                name: "Clarissa Putri",
+                status: "Hadir",
+                guests: "1 Orang",
+                message: "MasyaAllah tabarakallah Nadhira & Arka! Akhirnya sampai di titik ini. Lancar-lancar sampai hari H ya, tidak sabar bertemu kalian!",
+                time: "1 jam yang lalu"
+            },
+            {
+                name: "Keluarga Bpk. Rahmat Hidayat",
+                status: "Berhalangan",
+                guests: "-",
+                message: "Selamat atas pernikahan putra-putri tercinta. Mohon maaf kami belum bisa hadir karena sedang berada di luar kota. Doa terbaik kami menyertai.",
+                time: "3 jam yang lalu"
+            },
+            {
+                name: "Reza Oktovian",
+                status: "Hadir",
+                guests: "2 Orang",
+                message: "Happy Wedding bro Arka & Nadhira! Semoga langgeng dunia akhirat dan penuh cinta setiap harinya.",
+                time: "Kemarin"
+            }
+        ];
+
+        function handleAttendanceChange() {
+            const status = document.getElementById('rsvp-status').value;
+            const guestWrapper = document.getElementById('guest-count-wrapper');
+            if (status === 'Berhalangan') {
+                guestWrapper.classList.add('opacity-40', 'pointer-events-none');
+            } else {
+                guestWrapper.classList.remove('opacity-40', 'pointer-events-none');
+            }
+        }
+        window.handleAttendanceChange = handleAttendanceChange;
+
+        function renderWishes() {
+            const feed = document.getElementById('wishes-feed');
+            feed.innerHTML = '';
+
+            let hadirCount = 0;
+            let absenCount = 0;
+
+            wishesList.forEach((item) => {
+                if (item.status === 'Hadir') hadirCount++;
+                else absenCount++;
+
+                const badgeClass = item.status === 'Hadir'
+                    ? 'bg-sage-light text-sage'
+                    : 'bg-alabaster text-taupe border border-sand';
+
+                const card = document.createElement('div');
+                card.className = 'bg-ivory border border-sand/90 rounded-2xl p-5 transition-all';
+                card.innerHTML = `
+                    <div class="flex items-center justify-between gap-2 mb-2">
+                        <h4 class="font-serif text-lg font-medium text-charcoal">${escapeHtml(item.name)}</h4>
+                        <span class="text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full ${badgeClass}">
+                            ${escapeHtml(item.status)}
+                        </span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-charcoal/80 font-light leading-relaxed mb-3">
+                        "${escapeHtml(item.message)}"
+                    </p>
+                    <div class="flex items-center justify-between text-[11px] text-taupe/70">
+                        <span>${escapeHtml(item.time)}</span>
+                        ${item.status === 'Hadir' ? `<span>&bull; ${escapeHtml(item.guests)}</span>` : ''}
+                    </div>
+                `;
+                feed.appendChild(card);
+            });
+
+            document.getElementById('stat-total').textContent = wishesList.length;
+            document.getElementById('stat-hadir').textContent = hadirCount;
+            document.getElementById('stat-absen').textContent = absenCount;
+        }
+
+        function submitRsvp(event) {
+            event.preventDefault();
+            const nameInput = document.getElementById('rsvp-name');
+            const statusInput = document.getElementById('rsvp-status');
+            const guestsInput = document.getElementById('rsvp-guests');
+            const messageInput = document.getElementById('rsvp-message');
+
+            const newWish = {
+                name: nameInput.value.trim(),
+                status: statusInput.value,
+                guests: statusInput.value === 'Hadir' ? guestsInput.value : '-',
+                message: messageInput.value.trim(),
+                time: "Baru saja"
+            };
+
+            wishesList.unshift(newWish);
+            renderWishes();
+
+            messageInput.value = '';
+            showToast("Terima kasih atas konfirmasi & doa restu Anda!");
+        }
+        window.submitRsvp = submitRsvp;
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>"']/g, function(m) {
+                return ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#39;'
+                })[m];
+            });
+        }
+
+        /* -----------------------------------------------------------
+           7. TOAST NOTIFICATION & SCROLL REVEAL
+        ------------------------------------------------------------ */
+        let toastTimeout = null;
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = msg;
+
+            toast.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-3');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none', '-translate-y-3');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 2600);
+        }
+
+        function handleScrollReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+            reveals.forEach((el) => {
+                const top = el.getBoundingClientRect().top;
+                if (top < windowHeight - 60) {
+                    el.classList.add('active');
+                }
+            });
+
+            // Update active state on bottom icon navigation bar
+            const sections = ['hero', 'mempelai', 'acara', 'kisah', 'galeri', 'rsvp'];
+            let currentSection = 'hero';
+            sections.forEach((id) => {
+                const sec = document.getElementById(id);
+                if (sec) {
+                    const rect = sec.getBoundingClientRect();
+                    if (rect.top <= windowHeight * 0.45) {
+                        currentSection = id;
+                    }
+                }
+            });
+
+            const navLinks = document.querySelectorAll('.nav-icon-link');
+            navLinks.forEach((link) => {
+                if (link.getAttribute('data-section') === currentSection) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        /* -----------------------------------------------------------
+           INITIALIZE ON WINDOW LOAD
+        ------------------------------------------------------------ */
+        window.onload = function() {
+            initGuestName();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            renderWishes();
+            handleScrollReveal();
+            window.addEventListener('scroll', handleScrollReveal, { passive: true });
+
+            // Explicit click listener fallback on #open-btn
+            const openBtn = document.getElementById('open-btn');
+            if (openBtn) {
+                openBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openInvitation();
+                });
+            }
+        };
+    </script>
+</body>
+</html>
